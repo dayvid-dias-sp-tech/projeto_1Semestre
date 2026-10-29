@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap');
+
+:root {
+    font-family: 'Barlow', Arial, sans-serif;
+    color: #24252a;
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.cabecalho {
+    min-height: 64px;
+    padding: 12px 5.4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    background: #fff;
+    position: relative;
+    z-index: 2;
+    border-bottom: 1px solid #eee;
+}
+
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -.4px;
+}
+
+.marca-simbolo {
+    width: 23px;
+    height: 23px;
+    border: 1.5px solid #ff6410;
+    color: #ff6410;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transform: rotate(30deg);
+}
+
+.navegacao-principal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    color: #596070;
+    font-size: 12px;
+}
+
+.navegacao-principal .link-ativo {
+    color: #f36a18;
+}
+
+.acoes-cabecalho {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    align-items: center;
+}
+
+.botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 37px;
+    padding: 0 19px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 700;
+    transition: transform .18s, filter .18s;
+}
+
+.botao:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.04);
+}
+
+.botao-claro {
+    border: 1px solid #e8e9ec;
+    background: #fff;
+}
+
+.botao-laranja {
+    background: #ff7014;
+    color: #191919;
+}
+
+.botao-azul {
+    background: #122654;
+    color: #fff;
+    border: 1px solid #a7b5d4;
+}
+
+#inicio {
+    min-height: calc(100vh - 64px);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    color: #fff;
+    background: linear-gradient(90deg, rgba(22, 20, 20, .55), rgba(25, 22, 21, .38)), url('../assets/imgs/naruto-home.png') center/cover, #39312a;
+}
+
+.conteudo-destaque {
+    width: 89%;
+    max-width: 1120px;
+    min-height: calc(100vh - 64px);
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 54px 0;
+}
+
+.texto-destaque {
+    flex: 1 1 380px;
+    max-width: 570px;
+}
+
+.etiqueta {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin: 0 0 18px;
+    color: #ff7b24;
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    font-weight: 700;
+}
+
+.texto-destaque .etiqueta span {
+    width: 12px;
+    height: 2px;
+    background: #ff7b24;
+}
+
+h1 {
+    margin: 0 0 20px;
+    font-size: 48px;
+    line-height: 1.04;
+    letter-spacing: -1.2px;
+    font-weight: 700;
+}
+
+.introducao {
+    max-width: 490px;
+    margin: 0;
+    color: #e0dfe0;
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+.acoes-destaque {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.cartao-destaque {
+    flex: 1 1 300px;
+    max-width: 400px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #101e45;
+    box-shadow: 0 18px 50px #0006;
+}
+
+.imagem-destaque {
+    height: 350px;
+    overflow: hidden;
+    background: #d6d0ac;
+}
+
+.foto-destaque {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.legenda-destaque {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 17px;
+    color: #f1f2f5;
+    font-size: 11px;
+}
+
+.etiqueta-destaque {
+    color: #ff9b37;
+    font-size: 9px;
+    letter-spacing: .5px;
+    white-space: nowrap;
+}
+
+.sobre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 56px 24px;
+    text-align: center;
+}
+
+.sobre h2,
+.sobre p {
+    margin: 0;
+}
+
+.sobre h2 {
+    font-size: 30px;
+}
+
+.sobre p {
+    max-width: 550px;
+    color: #72747c;
+    line-height: 1.6;
+}
