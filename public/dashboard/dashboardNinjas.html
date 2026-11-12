@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#192856">
+    <title>SysKage | Dashboard da aldeia</title>
+    <link rel="stylesheet" href="../css/dashboardNinja.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-shell">
+        <aside class="sidebar">
+            <a class="marca" href="../home.html">
+                <span class="marca-simbolo" aria-hidden="true">✥</span>
+                <span>SysKage</span>
+            </a>
+            <p class="legenda-sidebar">Painel do Kage</p>
+
+            <nav class="menu-sidebar" aria-label="Navegação do dashboard">
+                <a class="item-menu ativo" href="#visao-geral"><span aria-hidden="true">▦</span>Dashboard</a>
+                <a class="item-menu" href="#indicadores"><span aria-hidden="true">♙</span>Indicadores</a>
+                <a class="item-menu" href="#desempenho"><span aria-hidden="true">▤</span>Desempenho</a>
+                <a class="item-menu" href="#ranking"><span aria-hidden="true">♛</span>Ranking do quiz</a>
+            </nav>
+
+            <div class="aldeia-ativa">
+                <p class="rotulo-sidebar">Aldeia ativa</p>
+                <p class="nome-aldeia"><span aria-hidden="true">⌖</span> Konohagakure</p>
+                <p class="descricao-aldeia">Vila Oculta da Folha</p>
+                <p class="marca-sidebar">SysKage · SPTech</p>
+            </div>
+        </aside>
+
+        <main class="conteudo-dashboard">
+            <header class="cabecalho-dashboard" id="visao-geral">
+                <div>
+                    <p class="caminho-dashboard">Administração <span>/</span> <strong>Visão geral</strong></p>
+                    <h1>Dashboard da aldeia</h1>
+                    <p class="subtitulo-dashboard">Acompanhe seus ninjas, equipes e missões em um só lugar.</p>
+                </div>
+                <div class="perfil-kage">
+                    <strong>Kage: <span id="b_usuario">Akira Tanaka</span></strong>
+                    <span>Konohagakure</span>
+                </div>
+            </header>
+
+            <section class="resumo-indicadores" aria-label="Resumo da aldeia">
+                <article class="cartao-resumo">
+                    <p>Ninjas cadastrados</p>
+                    <div><strong>128</strong><span aria-hidden="true">♙</span></div>
+                </article>
+                <article class="cartao-resumo">
+                    <p>Equipes formadas</p>
+                    <div><strong>24</strong><span aria-hidden="true">⬡</span></div>
+                </article>
+                <article class="cartao-resumo">
+                    <p>Missões em andamento</p>
+                    <div><strong>24</strong><span aria-hidden="true">▤</span></div>
+                </article>
+                <article class="cartao-resumo">
+                    <p>Missões concluídas · 30 dias</p>
+                    <div><strong>48</strong><span class="icone-laranja" aria-hidden="true">✧</span></div>
+                </article>
+            </section>
+
+            <section class="paineis-graficos" id="indicadores" aria-label="Indicadores da aldeia">
+                <article class="painel-grafico">
+                    <div class="titulo-painel">
+                        <div><h2>Ninjas mais fortes</h2><p>Cinco maiores poderes de combate da aldeia</p></div>
+                    </div>
+                    <div class="area-grafico"><canvas id="graficoNinjas" aria-label="Gráfico de poder dos ninjas"></canvas></div>
+                </article>
+
+                <article class="painel-grafico">
+                    <div class="titulo-painel">
+                        <div><h2>Atributos do ninja mais forte</h2><p>Comparação de atributos · escala 0–100</p></div>
+                    </div>
+                    <div class="area-grafico"><canvas id="graficoAtributos" aria-label="Gráfico radar dos atributos do ninja"></canvas></div>
+                    <div class="destaque-ninja"><span class="avatar-ninja" aria-hidden="true">忍</span><span><strong>Kakashi Hatake</strong><small>Jounin · Poder 980</small></span><strong class="pontuacao-ninja">98/100</strong></div>
+                </article>
+
+                <article class="painel-grafico" id="desempenho">
+                    <div class="titulo-painel">
+                        <div><h2>Equipes mais fortes</h2><p>Poder · 3 Genins + Jounin líder</p></div>
+                    </div>
+                    <div class="area-grafico"><canvas id="graficoEquipes" aria-label="Gráfico de poder das equipes"></canvas></div>
+                </article>
+
+                <article class="painel-grafico painel-donut">
+                    <div class="titulo-painel"><div><h2>Missões por classificação</h2></div></div>
+                    <div class="area-grafico"><canvas id="graficoClassificacao" aria-label="Gráfico de missões por classificação"></canvas></div>
+                </article>
+
+                <article class="painel-grafico">
+                    <div class="titulo-painel">
+                        <div><h2>Missões concluídas por mês</h2><p>Jun–Nov 2026 · novembro parcial</p></div>
+                    </div>
+                    <div class="area-grafico"><canvas id="graficoMensal" aria-label="Gráfico de missões concluídas por mês"></canvas></div>
+                </article>
+
+                <article class="painel-grafico painel-donut">
+                    <div class="titulo-painel"><div><h2>Missões por status</h2></div></div>
+                    <div class="area-grafico"><canvas id="graficoStatus" aria-label="Gráfico de missões por status"></canvas></div>
+                </article>
+            </section>
+
+            <section class="painel-ranking" id="ranking" aria-labelledby="titulo-ranking">
+                <div class="titulo-ranking">
+                    <h2 id="titulo-ranking">Ranking do quiz Naruto</h2>
+                    <span>5 maiores pontuações</span>
+                </div>
+                <div class="tabela-responsiva">
+                    <table>
+                        <thead><tr><th>Posição</th><th>Nome do Kage</th><th>Aldeia</th><th>Pontuação</th></tr></thead>
+                        <tbody>
+                            <tr class="primeiro-lugar"><td>01</td><td>Akira Tanaka</td><td>Konohagakure</td><td>980 pts</td></tr>
+                            <tr><td>02</td><td>Ren Kazehaya</td><td>Sunagakure</td><td>940 pts</td></tr>
+                            <tr><td>03</td><td>Mei Hoshino</td><td>Kirigakure</td><td>910 pts</td></tr>
+                            <tr><td>04</td><td>Daichi Arata</td><td>Iwagakure</td><td>870 pts</td></tr>
+                            <tr><td>05</td><td>Sora Kumoi</td><td>Kumogakure</td><td>850 pts</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <p class="aviso-mock">Dados demonstrativos para visualização do dashboard.</p>
+        </main>
+    </div>
+
+    <script>
+        if (sessionStorage.NOME_USUARIO != undefined) {
+            b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+        }
+
+        var corAzul = "#192856";
+        var corLaranja = "#ff7014";
+        var corCinza = "#dfe4ec";
+
+        new Chart(document.getElementById("graficoNinjas"), {
+            type: "bar",
+            data: {
+                labels: ["Kakashi Hatake", "Might Gai", "Asuma Sarutobi", "Kurenai Yuhi", "Yamato"],
+                datasets: [{ label: "Poder", data: [980, 930, 870, 840, 800], backgroundColor: [corLaranja, corAzul, corAzul, corAzul, corAzul], borderRadius: 4, barThickness: 9 }]
+            },
+            options: {
+                indexAxis: "y",
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { min: 0, max: 1000, ticks: { stepSize: 250, font: { size: 9 } }, grid: { color: corCinza } },
+                    y: { ticks: { font: { size: 9 } }, grid: { display: false } }
+                }
+            }
+        });
+
+        new Chart(document.getElementById("graficoAtributos"), {
+            type: "radar",
+            data: {
+                labels: ["Ninjutsu", "Taijutsu", "Genjutsu", "Chakra", "Inteligência", "Velocidade"],
+                datasets: [{ label: "Kakashi Hatake", data: [86, 88, 82, 92, 98, 86], backgroundColor: "rgba(255, 112, 20, .2)", borderColor: corLaranja, pointBackgroundColor: corLaranja, borderWidth: 2, pointRadius: 2 }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: { r: { min: 0, max: 100, ticks: { display: false, stepSize: 20 }, pointLabels: { font: { size: 8 } }, grid: { color: corCinza }, angleLines: { color: corCinza } } }
+            }
+        });
+
+        new Chart(document.getElementById("graficoEquipes"), {
+            type: "bar",
+            data: {
+                labels: ["Time Kakashi", "Time Asuma", "Time Kurenai", "Time Guy", "Time Yamato"],
+                datasets: [{ label: "Poder total", data: [2100, 2000, 1820, 1790, 1720], backgroundColor: [corLaranja, corAzul, corAzul, corAzul, corAzul], borderRadius: 4, barThickness: 9 }]
+            },
+            options: {
+                indexAxis: "y",
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { min: 0, max: 2200, ticks: { stepSize: 500, font: { size: 9 } }, grid: { color: corCinza } },
+                    y: { ticks: { font: { size: 9 } }, grid: { display: false } }
+                }
+            }
+        });
+
+        new Chart(document.getElementById("graficoClassificacao"), {
+            type: "doughnut",
+            data: {
+                labels: ["Rank D", "Rank C", "Rank B", "Rank A", "Rank S"],
+                datasets: [{ data: [72, 54, 36, 15, 3], backgroundColor: [corLaranja, "#f5c842", corAzul, "#5976b9", "#101a36"], borderWidth: 0, hoverOffset: 4 }]
+            },
+            options: { maintainAspectRatio: false, cutout: "62%", plugins: { legend: { position: "right", labels: { boxWidth: 8, boxHeight: 8, padding: 8, font: { size: 9 } } } } },
+            plugins: [{
+                id: "totalMissaoClassificacao",
+                afterDraw: function (grafico) {
+                    var contexto = grafico.ctx;
+                    var centroX = (grafico.chartArea.left + grafico.chartArea.right) / 2;
+                    var centroY = (grafico.chartArea.top + grafico.chartArea.bottom) / 2;
+                    contexto.save();
+                    contexto.textAlign = "center";
+                    contexto.fillStyle = corAzul;
+                    contexto.font = "bold 17px Barlow, Arial";
+                    contexto.fillText("180", centroX, centroY);
+                    contexto.fillStyle = "#7b8494";
+                    contexto.font = "9px Barlow, Arial";
+                    contexto.fillText("missões", centroX, centroY + 13);
+                    contexto.restore();
+                }
+            }]
+        });
+
+        new Chart(document.getElementById("graficoMensal"), {
+            type: "line",
+            data: {
+                labels: ["Jun", "Jul", "Ago", "Set", "Out", "Nov"],
+                datasets: [{ label: "Missões concluídas", data: [10, 12, 14, 18, 24, 30], borderColor: corLaranja, backgroundColor: "rgba(255, 112, 20, .1)", fill: true, tension: .3, pointRadius: 2, pointBackgroundColor: corLaranja, borderWidth: 2 }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { ticks: { font: { size: 9 } }, grid: { display: false } },
+                    y: { min: 0, max: 40, ticks: { stepSize: 10, font: { size: 9 } }, grid: { color: corCinza } }
+                }
+            }
+        });
+
+        new Chart(document.getElementById("graficoStatus"), {
+            type: "doughnut",
+            data: {
+                labels: ["Disponíveis", "Em andamento", "Concluídas", "Canceladas"],
+                datasets: [{ data: [36, 24, 108, 12], backgroundColor: [corAzul, corLaranja, "#303b51", "#c9ced7"], borderWidth: 0, hoverOffset: 4 }]
+            },
+            options: { maintainAspectRatio: false, cutout: "62%", plugins: { legend: { position: "right", labels: { boxWidth: 8, boxHeight: 8, padding: 8, font: { size: 9 } } } } },
+            plugins: [{
+                id: "totalMissaoStatus",
+                afterDraw: function (grafico) {
+                    var contexto = grafico.ctx;
+                    var centroX = (grafico.chartArea.left + grafico.chartArea.right) / 2;
+                    var centroY = (grafico.chartArea.top + grafico.chartArea.bottom) / 2;
+                    contexto.save();
+                    contexto.textAlign = "center";
+                    contexto.fillStyle = corAzul;
+                    contexto.font = "bold 17px Barlow, Arial";
+                    contexto.fillText("180", centroX, centroY);
+                    contexto.fillStyle = "#7b8494";
+                    contexto.font = "9px Barlow, Arial";
+                    contexto.fillText("missões", centroX, centroY + 13);
+                    contexto.restore();
+                }
+            }]
+        });
+    </script>
+</body>
+</html>
