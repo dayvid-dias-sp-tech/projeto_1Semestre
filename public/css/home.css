@@ -583,11 +583,142 @@ h1 {
     font-size: 10px;
 }
 
+.patentes {
+    padding: 54px 0 58px;
+    scroll-margin-top: 82px;
+    color: #20242b;
+    background: #f0f2f5;
+}
+
+.patentes .rotulo-secao {
+    color: #26395f;
+}
+
+.patentes .descricao-secao {
+    color: #707b8a;
+}
+
+.cartoes-patentes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 24px;
+}
+
+.cartao-patente {
+    display: flex;
+    flex: 1 1 150px;
+    min-height: 160px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px;
+    border: 1px solid #e6e9ee;
+    border-radius: 7px;
+    background: #fff;
+}
+
+.icone-patente {
+    display: flex;
+    width: 28px;
+    height: 28px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    font-size: 17px;
+}
+
+.icone-genin {
+    background: #fff0e6;
+    color: #ff7014;
+}
+
+.icone-chunin {
+    background: #edf0f6;
+    color: #26395f;
+}
+
+.icone-jonin {
+    background: #fff7df;
+    color: #d69c00;
+}
+
+.icone-kage {
+    background: #33446e;
+    color: #ff9b37;
+}
+
+.cartao-patente h3 {
+    margin: 0 0 7px;
+    font-size: 15px;
+}
+
+.linha-patente {
+    width: 18px;
+    height: 2px;
+    margin-bottom: 8px;
+    background: #ff7014;
+}
+
+.icone-chunin + h3 + .linha-patente {
+    background: #26395f;
+}
+
+.icone-jonin + h3 + .linha-patente {
+    background: #eab52a;
+}
+
+.cartao-patente > p {
+    margin: 0;
+    color: #778196;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.patente-kage {
+    border-color: #192856;
+    background: #192856;
+    color: #fff;
+}
+
+.patente-kage > p {
+    color: #c2cbe0;
+}
+
+.chamada-patentes {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 24px;
+    padding: 14px 16px;
+    border-radius: 7px;
+    background: #192856;
+    color: #fff;
+}
+
+.chamada-patentes h3 {
+    margin: 0 0 3px;
+    font-size: 13px;
+}
+
+.chamada-patentes p {
+    margin: 0;
+    color: #c2cbe0;
+    font-size: 10px;
+    line-height: 1.45;
+}
+
+.chamada-patentes .botao {
+    flex: 0 0 auto;
+}
+
 @media (max-width: 760px) {
     #inicio,
     .historia,
     .aldeias,
-    .clans {
+    .clans,
+    .patentes {
         scroll-margin-top: 120px;
     }
 
@@ -622,6 +753,14 @@ h1 {
     .cartao-clan {
         flex-basis: calc(50% - 7px);
     }
+
+    .patentes {
+        padding: 44px 0;
+    }
+
+    .cartao-patente {
+        flex-basis: calc(50% - 7px);
+    }
 }
 
 @media (max-width: 480px) {
@@ -646,6 +785,15 @@ h1 {
 
     .cartao-clan {
         flex-basis: 100%;
+    }
+
+    .cartao-patente {
+        flex-basis: 100%;
+    }
+
+    .chamada-patentes {
+        align-items: flex-start;
+        flex-direction: column;
     }
 
 }
