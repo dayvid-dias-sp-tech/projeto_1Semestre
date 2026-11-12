@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#192856">
+    <title>SysKage | Entrar</title>
+    <link rel="stylesheet" href="./css/loginNinja.css">
+</head>
+<body>
+    <main class="pagina-login">
+        <section class="painel-apresentacao" aria-label="Apresentação SysKage">
+            <a class="marca" href="home.html" aria-label="SysKage, página inicial">
+                <span class="marca-simbolo" aria-hidden="true">六</span>
+                <span>SysKage</span>
+            </a>
+
+            <div class="apresentacao-conteudo">
+                <p class="chamada">Estratégia. Liderança. Legado.</p>
+                <h1>Toda grande vila começa com uma grande liderança.</h1>
+                <img class="imagem-destaque" src="./assets/imgs/naruto-lamen.png" alt="Naruto em uma ilustração colorida">
+                <p class="legenda"><span aria-hidden="true"></span>Lidere sua vila. Comande seu destino.</p>
+            </div>
+        </section>
+
+        <section class="painel-formulario" aria-labelledby="titulo-login">
+            <div class="formulario-conteudo">
+                <h2 id="titulo-login">Bem-vindo de volta</h2>
+                <p class="subtitulo">Entre para administrar sua vila.</p>
+
+                <form class="formulario" onsubmit="return entrar()">
+                    <label for="email_input">E-mail</label>
+                    <input id="email_input" name="email" type="email" placeholder="voce@suavila.com" autocomplete="email" required>
+
+                    <label for="senha_input">Senha</label>
+                    <div class="campo-senha">
+                        <input id="senha_input" name="senha" type="password" placeholder="Digite sua senha" autocomplete="current-password" required>
+                        <button class="alternar-senha" type="button" aria-label="Mostrar senha" onclick="alternarSenha()">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.3-5 9.5-5 9.5 5 9.5 5-3.3 5-9.5 5-9.5-5-9.5-5Z"/><circle cx="12" cy="12" r="2.5"/></svg>
+                        </button>
+                    </div>
+
+                    <button class="botao-entrar" type="submit">Entrar</button>
+                    <p class="mensagem-erro" id="mensagem_erro" role="alert" aria-live="polite"></p>
+                </form>
+
+                <p class="link-cadastro">Ainda não possui uma vila? <a href="cadastroNinja.html">Cadastre-se</a></p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        async function entrar() {
+            const email = document.getElementById("email_input").value.trim();
+            const senha = document.getElementById("senha_input").value;
+            const mensagem = document.getElementById("mensagem_erro");
+            mensagem.textContent = "";
+
+            try {
+                const resposta = await fetch("/usuarios/autenticar", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ emailServer: email, senhaServer: senha })
+                });
+
+                if (!resposta.ok) {
+                    mensagem.textContent = "E-mail ou senha inválidos. Confira os dados e tente novamente.";
+                    return false;
+                }
+
+                const usuario = await resposta.json();
+                sessionStorage.EMAIL_USUARIO = usuario.email;
+                sessionStorage.NOME_USUARIO = usuario.nome;
+                sessionStorage.ID_USUARIO = usuario.id;
+                sessionStorage.AQUARIOS = JSON.stringify(usuario.aquarios);
+                window.location.href = "./dashboard/cards.html";
+            } catch (erro) {
+                mensagem.textContent = "Não foi possível entrar agora. Tente novamente em instantes.";
+            }
+
+            return false;
+        }
+
+        function alternarSenha() {
+            const campo = document.getElementById("senha_input");
+            const botao = document.querySelector(".alternar-senha");
+            const mostrar = campo.type === "password";
+            campo.type = mostrar ? "text" : "password";
+            botao.setAttribute("aria-label", mostrar ? "Ocultar senha" : "Mostrar senha");
+        }
+    </script>
+</body>
+</html>
