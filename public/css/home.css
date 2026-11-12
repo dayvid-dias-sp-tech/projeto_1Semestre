@@ -713,12 +713,161 @@ h1 {
     flex: 0 0 auto;
 }
 
+.missoes {
+    padding: 54px 0 58px;
+    scroll-margin-top: 82px;
+    color: #f5f6f8;
+    background: #171717;
+}
+
+.cartoes-missoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.cartao-missao {
+    position: relative;
+    display: flex;
+    flex: 1 1 130px;
+    min-width: 0;
+    min-height: 166px;
+    flex-direction: column;
+    padding: 12px;
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid rgb(255 255 255 / 10%);
+    border-radius: 8px;
+    background: #202d41;
+}
+
+.cartao-missao::before {
+    position: absolute;
+    z-index: -1;
+    top: -45px;
+    right: -25px;
+    width: 130px;
+    height: 130px;
+    border: 1px solid rgb(255 255 255 / 18%);
+    border-radius: 50%;
+    background: repeating-radial-gradient(circle, transparent 0 12px, rgb(255 255 255 / 9%) 13px 14px);
+    content: "";
+}
+
+.cartao-missao > * {
+    position: relative;
+}
+
+.topo-missao {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    color: #aeb9d2;
+    font-size: 9px;
+    letter-spacing: .6px;
+    text-transform: uppercase;
+}
+
+.selo-missao {
+    display: flex;
+    width: 22px;
+    height: 22px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background: #667085;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.cartao-missao h3 {
+    margin: 0 0 6px;
+    color: #fff;
+    font-size: 13px;
+    line-height: 1.2;
+}
+
+.cartao-missao > p {
+    margin: 0;
+    color: #c1cad8;
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+.missao-rank-d {
+    background-color: #45485c;
+    background-image: linear-gradient(135deg, rgb(18 30 54 / 30%), rgb(79 83 105 / 95%));
+}
+
+.missao-rank-c {
+    background-color: #274d86;
+    background-image: linear-gradient(135deg, rgb(24 40 76 / 48%), rgb(48 91 153 / 95%));
+}
+
+.missao-rank-b {
+    background-color: #1b6254;
+    background-image: linear-gradient(135deg, rgb(23 61 55 / 48%), rgb(38 111 92 / 95%));
+}
+
+.missao-rank-a {
+    background-color: #ae541d;
+    background-image: linear-gradient(135deg, rgb(105 50 30 / 46%), rgb(206 102 37 / 95%));
+}
+
+.missao-rank-s {
+    border-color: #ff7014;
+    background-color: #52356e;
+    background-image: linear-gradient(135deg, rgb(57 37 84 / 48%), rgb(119 65 147 / 95%));
+}
+
+.missao-rank-c .selo-missao {
+    background: #4386e8;
+}
+
+.missao-rank-b .selo-missao {
+    background: #22a875;
+}
+
+.missao-rank-a .selo-missao {
+    background: #ff7014;
+}
+
+.missao-rank-s .selo-missao {
+    background: #ed6728;
+}
+
+.nota-missoes {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 10px 14px;
+    border-radius: 6px;
+    background: #202d41;
+}
+
+.nota-missoes span {
+    color: #ff8a31;
+    font-size: 14px;
+}
+
+.nota-missoes p {
+    margin: 0;
+    color: #c1cad8;
+    font-size: 10px;
+    line-height: 1.5;
+}
+
 @media (max-width: 760px) {
     #inicio,
     .historia,
     .aldeias,
     .clans,
-    .patentes {
+    .patentes,
+    .missoes {
         scroll-margin-top: 120px;
     }
 
@@ -758,6 +907,14 @@ h1 {
         padding: 44px 0;
     }
 
+    .missoes {
+        padding: 44px 0;
+    }
+
+    .cartao-missao {
+        flex-basis: calc(33.333% - 8px);
+    }
+
     .cartao-patente {
         flex-basis: calc(50% - 7px);
     }
@@ -788,6 +945,10 @@ h1 {
     }
 
     .cartao-patente {
+        flex-basis: 100%;
+    }
+
+    .cartao-missao {
         flex-basis: 100%;
     }
 
