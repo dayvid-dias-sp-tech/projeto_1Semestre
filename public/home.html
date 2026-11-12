@@ -15,12 +15,12 @@
             <span class="marca-simbolo">✥</span><span>SysKage</span>
         </a>
         <nav class="navegacao-principal">
-            <a class="link-ativo" href="#inicio">Início</a>
-            <a href="#historia">História</a>
-            <a href="#aldeias">Aldeias</a>
-            <a href="#clans">Clãs</a>
-            <a href="#patentes">Patentes</a>
-            <a href="#missoes">Missões</a>
+            <a class="link-ativo" id="link_inicio" href="#inicio" onclick="ativarLink(this)">Início</a>
+            <a href="#historia" onclick="ativarLink(this)">História</a>
+            <a href="#aldeias" onclick="ativarLink(this)">Aldeias</a>
+            <a href="#clans" onclick="ativarLink(this)">Clãs</a>
+            <a href="#patentes" onclick="ativarLink(this)">Patentes</a>
+            <a href="#missoes" onclick="ativarLink(this)">Missões</a>
         </nav>
         <div class="acoes-cabecalho">
             <a class="botao botao-claro" href="login.html">Entrar</a>
@@ -276,6 +276,14 @@
         </section>
 
     </main>
-</body>
+<script>
+    var linkAtivoAtual = link_inicio;
 
+    function ativarLink(linkSelecionado) {
+        linkAtivoAtual.classList.remove("link-ativo");
+        linkSelecionado.classList.add("link-ativo");
+        linkAtivoAtual = linkSelecionado;
+    }
+</script>
+</body>
 </html>

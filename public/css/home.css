@@ -66,6 +66,11 @@ a {
     font-size: 12px;
 }
 
+.navegacao-principal a {
+    transition: color .2s ease;
+}
+
+.navegacao-principal a:hover,
 .navegacao-principal .link-ativo {
     color: #f36a18;
 }
