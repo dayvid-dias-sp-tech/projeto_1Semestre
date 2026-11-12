@@ -44,7 +44,7 @@
                     <label for="senha_input">Senha</label>
                     <div class="campo-senha">
                         <input id="senha_input" name="senha" type="password" placeholder="Crie uma senha segura" autocomplete="new-password" minlength="8" required>
-                        <button class="alternar-senha" type="button" aria-label="Mostrar senha" onclick="alternarSenha('senha_input', this)">
+                        <button class="alternar-senha" type="button" aria-label="Mostrar ou ocultar senha" onclick="alternarSenha(senha_input)">
                             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.3-5 9.5-5 9.5 5 9.5 5-3.3 5-9.5 5-9.5-5-9.5-5Z"/><circle cx="12" cy="12" r="2.5"/></svg>
                         </button>
                     </div>
@@ -52,7 +52,7 @@
                     <label for="confirmacao_senha_input">Confirme sua senha</label>
                     <div class="campo-senha">
                         <input id="confirmacao_senha_input" name="confirmacao_senha" type="password" placeholder="Digite a senha novamente" autocomplete="new-password" minlength="8" required>
-                        <button class="alternar-senha" type="button" aria-label="Mostrar confirmação de senha" onclick="alternarSenha('confirmacao_senha_input', this)">
+                        <button class="alternar-senha" type="button" aria-label="Mostrar ou ocultar confirmação de senha" onclick="alternarSenha(confirmacao_senha_input)">
                             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.3-5 9.5-5 9.5 5 9.5 5-3.3 5-9.5 5-9.5-5-9.5-5Z"/><circle cx="12" cy="12" r="2.5"/></svg>
                         </button>
                     </div>
@@ -67,26 +67,25 @@
     </main>
 
     <script>
-        function alternarSenha(idCampo, botao) {
-            const campo = document.getElementById(idCampo);
-            const mostrar = campo.type === "password";
-            campo.type = mostrar ? "text" : "password";
-            botao.setAttribute("aria-label", mostrar ? "Ocultar senha" : "Mostrar senha");
+        function alternarSenha(campo) {
+            if (campo.type == "password") {
+                campo.type = "text";
+            } else {
+                campo.type = "password";
+            }
         }
 
         function validarCadastro() {
-            const senha = document.getElementById("senha_input").value;
-            const confirmacao = document.getElementById("confirmacao_senha_input").value;
-            const mensagem = document.getElementById("mensagem_erro");
-            mensagem.textContent = "";
+            var senha = senha_input.value;
+            var confirmacao = confirmacao_senha_input.value;
+            mensagem_erro.innerHTML = "";
 
             if (senha !== confirmacao) {
-                mensagem.textContent = "As senhas não coincidem.";
-                document.getElementById("confirmacao_senha_input").focus();
+                mensagem_erro.innerHTML = "As senhas não coincidem.";
                 return false;
             }
 
-            mensagem.textContent = "O cadastro de novas vilas ainda não está disponível.";
+            mensagem_erro.innerHTML = "O cadastro de novas vilas ainda não está disponível.";
             return false;
         }
     </script>
