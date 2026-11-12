@@ -468,10 +468,126 @@ h1 {
     color: #b5b7ba;
 }
 
+.clans {
+    padding: 54px 0 58px;
+    scroll-margin-top: 82px;
+    color: #f5f6f8;
+    background: #171717;
+}
+
+.cartoes-clans {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 24px;
+}
+
+.cartao-clan {
+    display: flex;
+    flex: 1 1 calc(33.333% - 10px);
+    min-width: 0;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #1c1b30;
+}
+
+.arte-clan {
+    position: relative;
+    display: flex;
+    min-height: 106px;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 14px;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.arte-clan::before {
+    position: absolute;
+    z-index: -1;
+    top: -38px;
+    right: 18px;
+    width: 150px;
+    height: 150px;
+    border: 1px solid rgb(255 255 255 / 22%);
+    border-radius: 50%;
+    background: repeating-radial-gradient(circle, transparent 0 13px, rgb(255 255 255 / 10%) 14px 15px);
+    content: "";
+}
+
+.arte-clan span {
+    align-self: flex-start;
+    color: rgb(255 255 255 / 72%);
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.arte-clan strong {
+    color: rgb(255 255 255 / 88%);
+    font-family: serif;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: .95;
+    text-shadow: 0 2px 12px rgb(0 0 0 / 18%);
+}
+
+.arte-uchiha {
+    background: linear-gradient(125deg, #173b69, #456da0);
+}
+
+.arte-hyuga {
+    background: linear-gradient(125deg, #59467f, #8570a7);
+}
+
+.arte-uzumaki {
+    background: linear-gradient(125deg, #8b4b39, #bd7553);
+}
+
+.arte-nara {
+    background: linear-gradient(125deg, #285248, #4b7968);
+}
+
+.arte-akimichi {
+    background: linear-gradient(125deg, #326277, #6496a5);
+}
+
+.arte-yamanaka {
+    background: linear-gradient(125deg, #753b79, #a85d9f);
+}
+
+.texto-clan {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 11px 13px 13px;
+}
+
+.texto-clan h3 {
+    margin: 0 0 3px;
+    color: #f6f6f8;
+    font-size: 14px;
+}
+
+.texto-clan p {
+    margin: 0;
+    color: #aab4c3;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.texto-clan .tecnica-clan {
+    margin-bottom: 4px;
+    color: #ff8a31;
+    font-size: 10px;
+}
+
 @media (max-width: 760px) {
     #inicio,
     .historia,
-    .aldeias {
+    .aldeias,
+    .clans {
         scroll-margin-top: 120px;
     }
 
@@ -498,6 +614,14 @@ h1 {
     .cartao-aldeia {
         flex-basis: 45%;
     }
+
+    .clans {
+        padding: 44px 0;
+    }
+
+    .cartao-clan {
+        flex-basis: calc(50% - 7px);
+    }
 }
 
 @media (max-width: 480px) {
@@ -517,6 +641,10 @@ h1 {
     }
 
     .cartao-aldeia {
+        flex-basis: 100%;
+    }
+
+    .cartao-clan {
         flex-basis: 100%;
     }
 

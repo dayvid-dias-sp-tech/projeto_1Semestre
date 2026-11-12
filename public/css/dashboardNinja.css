@@ -206,6 +206,7 @@ a {
 
 .resumo-indicadores {
     display: flex;
+    flex: 0 0 auto;
     flex-wrap: wrap;
     gap: 10px;
 }
@@ -259,6 +260,7 @@ a {
 
 .paineis-graficos {
     display: flex;
+    flex: 0 0 auto;
     flex-wrap: wrap;
     align-items: stretch;
     gap: 10px;
@@ -347,6 +349,7 @@ a {
 }
 
 .painel-ranking {
+    flex: 0 0 auto;
     padding: 10px 12px 8px;
     border: 1px solid #e9ecf1;
     border-radius: 7px;
@@ -367,15 +370,40 @@ a {
 }
 
 .tabela-responsiva {
-    overflow-x: auto;
+    overflow: hidden;
 }
 
 table {
     width: 100%;
+    table-layout: fixed;
     border-collapse: collapse;
-    white-space: nowrap;
     font-size: 10px;
     text-align: left;
+}
+
+th,
+td {
+    word-break: break-word;
+}
+
+th:nth-child(1),
+td:nth-child(1) {
+    width: 15%;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+    width: 30%;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+    width: 33%;
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+    width: 22%;
 }
 
 th {
@@ -475,9 +503,9 @@ td:last-child {
     .menu-sidebar {
         flex: 1;
         flex-direction: row;
+        flex-wrap: wrap;
         justify-content: flex-end;
         gap: 4px;
-        overflow-x: auto;
     }
 
     .item-menu {
@@ -491,6 +519,7 @@ td:last-child {
     .conteudo-dashboard {
         width: 100%;
         min-height: 0;
+        flex: 0 0 auto;
         margin-left: 0;
         padding: 14px;
     }
@@ -505,7 +534,15 @@ td:last-child {
 
     .menu-sidebar {
         width: 100%;
-        justify-content: flex-start;
+        justify-content: space-between;
+    }
+
+    .item-menu {
+        flex: 1 1 auto;
+        justify-content: center;
+        gap: 3px;
+        padding: 0 5px;
+        font-size: 9px;
     }
 
     .cabecalho-dashboard {
