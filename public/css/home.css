@@ -29,7 +29,8 @@ a {
     flex-wrap: wrap;
     gap: 12px;
     background: #fff;
-    position: relative;
+    position: sticky;
+    top: 0;
     z-index: 2;
     border-bottom: 1px solid #eee;
 }
@@ -111,6 +112,7 @@ a {
 
 #inicio {
     min-height: calc(100vh - 64px);
+    scroll-margin-top: 82px;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -243,7 +245,7 @@ h1 {
 
 .historia {
     padding: 54px 0 58px;
-    scroll-margin-top: 18px;
+    scroll-margin-top: 82px;
 }
 
 .conteudo-secao {
@@ -257,12 +259,23 @@ h1 {
     background: #171717;
 }
 
+.aldeias {
+    padding: 54px 0 58px;
+    scroll-margin-top: 82px;
+    color: #20242b;
+    background: #f0f2f5;
+}
+
 .rotulo-secao {
     margin: 0 0 8px;
     color: #ff7b24;
     font-size: 10px;
     letter-spacing: .8px;
     text-transform: uppercase;
+}
+
+.aldeias .rotulo-secao {
+    color: #26395f;
 }
 
 .conteudo-secao > h2 {
@@ -342,8 +355,131 @@ h1 {
     line-height: 1.55;
 }
 
+.aldeias .descricao-secao {
+    color: #707b8a;
+}
+
+.aldeia-destaque {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: 120px;
+    margin-top: 24px;
+    padding: 22px 26px;
+    overflow: hidden;
+    border-radius: 8px;
+    background: linear-gradient(90deg, rgb(24 37 68 / 84%), rgb(24 37 68 / 65%)), url('../assets/imgs/naruto-home.png') center 40% / cover;
+    color: #fff;
+}
+
+.texto-aldeia-destaque {
+    max-width: 700px;
+}
+
+.texto-aldeia-destaque h3 {
+    margin: 0 0 6px;
+    font-size: 21px;
+}
+
+.texto-aldeia-destaque p {
+    max-width: 560px;
+    margin: 0;
+    color: #d4dbea;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.simbolo-folha {
+    display: block;
+    flex: 0 0 54px;
+    width: 54px;
+    height: 54px;
+    fill: none;
+    stroke: #fff;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 3;
+}
+
+.cartoes-aldeias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.cartao-aldeia {
+    display: flex;
+    flex: 1 1 215px;
+    flex-direction: column;
+    min-height: 150px;
+    padding: 16px;
+    border-radius: 7px;
+    background: #202d41;
+    color: #f5f6f8;
+}
+
+.topo-cartao-aldeia {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.topo-cartao-aldeia p {
+    margin: 0;
+    font-size: 9px;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+}
+
+.topo-cartao-aldeia span {
+    font-size: 22px;
+    line-height: 1;
+}
+
+.cartao-aldeia h3 {
+    margin: 0 0 8px;
+    font-size: 15px;
+}
+
+.cartao-aldeia > p {
+    margin: 0;
+    color: #aab4c3;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.aldeia-vento .topo-cartao-aldeia {
+    color: #ffc83d;
+}
+
+.aldeia-agua .topo-cartao-aldeia {
+    color: #49c8e7;
+}
+
+.aldeia-raio .topo-cartao-aldeia {
+    color: #a987f1;
+}
+
+.aldeia-terra .topo-cartao-aldeia {
+    color: #b5b7ba;
+}
+
 @media (max-width: 760px) {
+    #inicio,
+    .historia,
+    .aldeias {
+        scroll-margin-top: 120px;
+    }
+
     .historia {
+        padding: 44px 0;
+    }
+
+    .aldeias {
         padding: 44px 0;
     }
 
@@ -357,6 +493,31 @@ h1 {
 
     .cartao-historia > img {
         height: 190px;
+    }
+
+    .cartao-aldeia {
+        flex-basis: 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .aldeia-destaque {
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    .texto-aldeia-destaque h3 {
+        font-size: 18px;
+    }
+
+    .simbolo-folha {
+        flex-basis: 38px;
+        width: 38px;
+        height: 38px;
+    }
+
+    .cartao-aldeia {
+        flex-basis: 100%;
     }
 
 }
