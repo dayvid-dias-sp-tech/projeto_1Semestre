@@ -524,24 +524,45 @@ h1 {
     content: "";
 }
 
-.arte-clan span {
-    align-self: flex-start;
-    color: rgb(255 255 255 / 72%);
-    font-size: 14px;
-    letter-spacing: 2px;
+.simbolo-clan {
+    display: block;
+    max-width: 100%;
+    max-height: 82px;
+    margin: auto;
+    object-fit: contain;
 }
 
-.arte-clan strong {
-    color: rgb(255 255 255 / 88%);
-    font-family: serif;
-    font-size: 48px;
-    font-weight: 400;
-    line-height: .95;
-    text-shadow: 0 2px 12px rgb(0 0 0 / 18%);
+.arte-uchiha,
+.arte-hyuga,
+.arte-uzumaki,
+.arte-nara,
+.arte-akimichi,
+.arte-yamanaka {
+    min-height: 132px;
+    padding: 0;
 }
 
 .arte-uchiha {
-    background: linear-gradient(125deg, #173b69, #456da0);
+    background: #173b69;
+}
+
+.arte-uchiha::before {
+    content: none;
+}
+
+.arte-uchiha .simbolo-clan,
+.arte-hyuga .imagem-clan,
+.arte-uzumaki .imagem-clan,
+.arte-nara .imagem-clan,
+.arte-akimichi .imagem-clan,
+.arte-yamanaka .imagem-clan {
+    width: 100%;
+    height: 132px;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    object-fit: cover;
+    object-position: center;
 }
 
 .arte-hyuga {
@@ -845,26 +866,3 @@ h1 {
 .missao-rank-s .selo-missao {
     background: #ed6728;
 }
-
-.nota-missoes {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 20px;
-    padding: 10px 14px;
-    border-radius: 6px;
-    background: #202d41;
-}
-
-.nota-missoes span {
-    color: #ff8a31;
-    font-size: 14px;
-}
-
-.nota-missoes p {
-    margin: 0;
-    color: #c1cad8;
-    font-size: 10px;
-    line-height: 1.5;
-}
-
