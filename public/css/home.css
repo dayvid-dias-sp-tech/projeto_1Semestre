@@ -440,9 +440,11 @@ h1 {
     text-transform: uppercase;
 }
 
-.topo-cartao-aldeia span {
-    font-size: 22px;
-    line-height: 1;
+.simbolo-aldeia {
+    display: block;
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
 }
 
 .cartao-aldeia h3 {
