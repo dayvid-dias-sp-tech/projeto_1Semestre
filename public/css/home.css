@@ -303,8 +303,7 @@ h1 {
     background: #171717;
 }
 
-.cartoes-guia,
-.cartoes-personagens {
+.cartoes-guia {
     display: flex;
     flex-wrap: wrap;
     gap: 14px;
@@ -364,17 +363,72 @@ h1 {
     color: #26395f;
 }
 
-.personagens .descricao-secao,
-.cartao-personagem p {
+.personagens .descricao-secao {
     color: #707b8a;
 }
 
+.controles-carrossel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 22px;
+    color: #707b8a;
+    font-size: 12px;
+}
+
+.controles-carrossel > div {
+    display: flex;
+    gap: 8px;
+}
+
+.botao-carrossel {
+    width: 34px;
+    height: 34px;
+    border: 1px solid #d8dce3;
+    border-radius: 50%;
+    background: #fff;
+    color: #26395f;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.carrossel-personagens {
+    display: flex;
+    gap: 14px;
+    margin-top: 12px;
+    padding: 2px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.carrossel-personagens::-webkit-scrollbar {
+    display: none;
+}
+
 .cartao-personagem {
-    flex: 1 1 220px;
-    min-width: 0;
+    flex: 0 0 270px;
     overflow: hidden;
+    border: 1px solid #e1e4e9;
     border-radius: 8px;
     background: #fff;
+    transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.cartao-personagem:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgb(28 41 67 / 12%);
+}
+
+.cartao-personagem summary {
+    cursor: pointer;
+    list-style: none;
+}
+
+.cartao-personagem summary::-webkit-details-marker {
+    display: none;
 }
 
 .cartao-personagem img {
@@ -385,21 +439,47 @@ h1 {
     object-position: center 30%;
 }
 
-.cartao-personagem div {
+.texto-cartao-personagem {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
     padding: 13px 15px 16px;
 }
 
-.cartao-personagem h3 {
-    margin: 0 0 5px;
+.texto-cartao-personagem strong {
     font-size: 15px;
 }
 
-.cartao-personagem p {
-    margin: 0;
+.texto-cartao-personagem > span:not(.link-detalhes) {
+    color: #707b8a;
     font-size: 12px;
     line-height: 1.5;
 }
 
+.link-detalhes {
+    margin-top: 7px;
+    color: #d95b0a;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.cartao-personagem[open] .link-detalhes::after {
+    content: " (fechar)";
+}
+
+.detalhe-personagem {
+    margin: 0;
+    padding: 0 15px 16px;
+    color: #596070;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+@media (max-width: 560px) {
+    .cartao-personagem {
+        flex-basis: 82%;
+    }
+}
 .aviso-spoiler {
     margin-top: 18px;
     padding: 12px 15px;

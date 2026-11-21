@@ -91,25 +91,32 @@
             <div class="conteudo-secao">
                 <p class="rotulo-secao">Conheça o elenco</p>
                 <h2 id="titulo-personagens">Personagens para conhecer primeiro</h2>
-                <p class="descricao-secao">Alguns rostos conhecidos de Konoha, apresentados sem revelar momentos importantes da história.</p>
+                <p class="descricao-secao">Clique em um personagem para ver mais informações, sem spoilers importantes.</p>
 
-                <div class="cartoes-personagens">
-                    <article class="cartao-personagem">
-                        <img src="./assets/imgs/naruto-lamen.png" alt="Naruto Uzumaki com seus hashis">
-                        <div><h3>Naruto Uzumaki</h3><p>Um ninja persistente que sonha em se tornar Hokage.</p></div>
-                    </article>
-                    <article class="cartao-personagem">
-                        <img src="./assets/imgs/uchiha-img.png" alt="Sasuke Uchiha">
-                        <div><h3>Sasuke Uchiha</h3><p>Um talento dedicado ao treinamento e integrante do Time 7.</p></div>
-                    </article>
-                    <article class="cartao-personagem">
-                        <img src="./assets/imgs/yamanaka-img.png" alt="Ino Yamanaka">
-                        <div><h3>Ino Yamanaka</h3><p>Uma kunoichi confiante, conhecida por suas técnicas mentais.</p></div>
-                    </article>
-                    <article class="cartao-personagem">
-                        <img src="./assets/imgs/nara-img.png" alt="Shikamaru Nara">
-                        <div><h3>Shikamaru Nara</h3><p>Um estrategista brilhante que prefere resolver desafios com calma.</p></div>
-                    </article>
+                <div class="controles-carrossel">
+                    <span>Use as setas para explorar os personagens</span>
+                    <div>
+                        <button class="botao-carrossel" type="button" onclick="moverCarrossel(-1)" aria-label="Personagens anteriores">‹</button>
+                        <button class="botao-carrossel" type="button" onclick="moverCarrossel(1)" aria-label="Próximos personagens">›</button>
+                    </div>
+                </div>
+                <div class="carrossel-personagens" role="region" aria-label="Carrossel de personagens">
+                    <details class="cartao-personagem">
+                        <summary><img src="./assets/imgs/naruto-lamen.png" alt="Naruto Uzumaki com seus hashis"><span class="texto-cartao-personagem"><strong>Naruto Uzumaki</strong><span>Um ninja persistente que sonha em se tornar Hokage.</span><span class="link-detalhes">Saiba mais</span></span></summary>
+                        <p class="detalhe-personagem">Naruto é um ninja enérgico da Vila Oculta da Folha. Seu grande objetivo é se tornar Hokage e conquistar o reconhecimento de seus companheiros.</p>
+                    </details>
+                    <details class="cartao-personagem">
+                        <summary><img src="./assets/imgs/uchiha-img.png" alt="Sasuke Uchiha"><span class="texto-cartao-personagem"><strong>Sasuke Uchiha</strong><span>Um talento dedicado ao treinamento e integrante do Time 7.</span><span class="link-detalhes">Saiba mais</span></span></summary>
+                        <p class="detalhe-personagem">Sasuke é um ninja reservado e talentoso, conhecido por sua disciplina e dedicação ao treinamento. Ele faz parte do Time 7 junto de Naruto e Sakura.</p>
+                    </details>
+                    <details class="cartao-personagem">
+                        <summary><img src="./assets/imgs/yamanaka-img.png" alt="Ino Yamanaka"><span class="texto-cartao-personagem"><strong>Ino Yamanaka</strong><span>Uma kunoichi confiante, conhecida por suas técnicas mentais.</span><span class="link-detalhes">Saiba mais</span></span></summary>
+                        <p class="detalhe-personagem">Ino é uma kunoichi confiante do clã Yamanaka. As técnicas mentais de sua família são úteis para comunicação e trabalho em equipe.</p>
+                    </details>
+                    <details class="cartao-personagem">
+                        <summary><img src="./assets/imgs/nara-img.png" alt="Shikamaru Nara"><span class="texto-cartao-personagem"><strong>Shikamaru Nara</strong><span>Um estrategista brilhante que prefere resolver desafios com calma.</span><span class="link-detalhes">Saiba mais</span></span></summary>
+                        <p class="detalhe-personagem">Shikamaru é calmo, observador e dono de um raciocínio estratégico. As técnicas de sombras do clã Nara combinam com sua habilidade de planejar.</p>
+                    </details>
                 </div>
             </div>
         </section>
@@ -273,6 +280,9 @@
             linkAtivoAtual.classList.remove("link-ativo");
             linkSelecionado.classList.add("link-ativo");
             linkAtivoAtual = linkSelecionado;
+        }
+        function moverCarrossel(direcao) {
+            document.querySelector(".carrossel-personagens").scrollBy({ left: direcao * 280, behavior: "smooth" });
         }
     </script>
 </body>
