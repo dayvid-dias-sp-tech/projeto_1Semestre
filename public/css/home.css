@@ -713,34 +713,6 @@ h1 {
     color: #c2cbe0;
 }
 
-.chamada-patentes {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    margin-top: 24px;
-    padding: 14px 16px;
-    border-radius: 7px;
-    background: #192856;
-    color: #fff;
-}
-
-.chamada-patentes h3 {
-    margin: 0 0 3px;
-    font-size: 13px;
-}
-
-.chamada-patentes p {
-    margin: 0;
-    color: #c2cbe0;
-    font-size: 10px;
-    line-height: 1.45;
-}
-
-.chamada-patentes .botao {
-    flex: 0 0 auto;
-}
-
 .missoes {
     padding: 54px 0 58px;
     scroll-margin-top: 82px;
