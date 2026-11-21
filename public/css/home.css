@@ -21,8 +21,8 @@ a {
 }
 
 .cabecalho {
-    min-height: 64px;
-    padding: 12px 5.4%;
+    min-height: 35px;
+    padding: 2px 5.4%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -44,17 +44,10 @@ a {
     letter-spacing: -.4px;
 }
 
-.marca-simbolo {
-    width: 23px;
-    height: 23px;
-    border: 1.5px solid #ff6410;
-    color: #ff6410;
-    border-radius: 7px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    transform: rotate(30deg);
+.logo-syskage {
+    display: block;
+    width: 170px;
+    height: auto;
 }
 
 .navegacao-principal {

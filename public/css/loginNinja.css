@@ -46,17 +46,10 @@ a {
     font-weight: 700;
 }
 
-.marca-simbolo {
-    display: flex;
-    width: 24px;
-    height: 24px;
-    align-items: center;
-    justify-content: center;
-    border: 1.5px solid #ff6b13;
-    border-radius: 7px;
-    color: #ff6b13;
-    font-size: 16px;
-    transform: rotate(30deg);
+.logo-syskage {
+    display: block;
+    width: 170px;
+    height: auto;
 }
 
 .apresentacao-conteudo {
