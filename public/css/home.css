@@ -296,6 +296,121 @@ h1 {
     line-height: 1.5;
 }
 
+.guia-iniciante {
+    padding: 54px 0 58px;
+    scroll-margin-top: 82px;
+    color: #f5f6f8;
+    background: #171717;
+}
+
+.cartoes-guia,
+.cartoes-personagens {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 24px;
+}
+
+.cartao-guia {
+    flex: 1 1 220px;
+    padding: 18px;
+    border: 1px solid rgb(255 255 255 / 10%);
+    border-radius: 8px;
+    background: #202d41;
+}
+
+.numero-guia {
+    color: #ff8a31;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .8px;
+}
+
+.cartao-guia h3 {
+    margin: 10px 0 7px;
+    font-size: 16px;
+}
+
+.cartao-guia p,
+.explorar-site p {
+    margin: 0;
+    color: #c1cad8;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.explorar-site {
+    margin-top: 14px;
+    padding: 15px 18px;
+    border-left: 3px solid #ff7014;
+    border-radius: 4px;
+    background: #202d41;
+}
+
+.explorar-site a {
+    color: #ff9b37;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.personagens {
+    padding: 54px 0 58px;
+    scroll-margin-top: 82px;
+    color: #20242b;
+    background: #f0f2f5;
+}
+
+.personagens .rotulo-secao {
+    color: #26395f;
+}
+
+.personagens .descricao-secao,
+.cartao-personagem p {
+    color: #707b8a;
+}
+
+.cartao-personagem {
+    flex: 1 1 220px;
+    min-width: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.cartao-personagem img {
+    display: block;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    object-position: center 30%;
+}
+
+.cartao-personagem div {
+    padding: 13px 15px 16px;
+}
+
+.cartao-personagem h3 {
+    margin: 0 0 5px;
+    font-size: 15px;
+}
+
+.cartao-personagem p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.aviso-spoiler {
+    margin-top: 18px;
+    padding: 12px 15px;
+    border-left: 3px solid #ff7014;
+    border-radius: 4px;
+    background: #202d41;
+    color: #d8deea;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
 .cartoes-historia {
     display: flex;
     flex-wrap: wrap;

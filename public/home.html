@@ -16,6 +16,8 @@
         </a>
         <nav class="navegacao-principal">
             <a class="link-ativo" id="link_inicio" href="#inicio" onclick="ativarLink(this)">Início</a>
+            <a href="#guia" onclick="ativarLink(this)">Guia</a>
+            <a href="#personagens" onclick="ativarLink(this)">Personagens</a>
             <a href="#historia" onclick="ativarLink(this)">História</a>
             <a href="#aldeias" onclick="ativarLink(this)">Aldeias</a>
             <a href="#clans" onclick="ativarLink(this)">Clãs</a>
@@ -30,13 +32,12 @@
         <section id="inicio">
             <div class="conteudo-destaque">
                 <div class="texto-destaque">
-                    <p class="etiqueta"><span></span> BEM-VINDO AO MUNDO SHINOBI</p>
-                    <h1 id="titulo-destaque">O futuro de uma aldeia começa com seu Kage.</h1>
-                    <p class="introducao">Explore a história de Naruto, suas aldeias e seus clãs. Conheça o SysKage,
-                        projeto da SPTech para organizar dados e acompanhar equipes do mundo ninja.</p>
+                    <p class="etiqueta"><span></span> UM PRIMEIRO PASSO NO MUNDO NINJA</p>
+                    <h1 id="titulo-destaque">Conheça o mundo de Naruto, começando do início.</h1>
+                    <p class="introducao">Naruto é a história de um jovem ninja da Vila Oculta da Folha que sonha em se tornar Hokage, o líder de sua aldeia. Explore personagens, vilas e clãs com explicações para quem está chegando agora.</p>
                     <div class="acoes-destaque">
-                        <a class="botao botao-laranja" href="login.html">Conheça o SysKage</a>
-                        <a class="botao botao-azul" href="cadastro.html">Começar agora</a>
+                        <a class="botao botao-laranja" href="#guia">Comece pelo guia</a>
+                        <a class="botao botao-azul" href="cadastro.html">Conheça o SysKage</a>
                     </div>
                 </div>
 
@@ -51,11 +52,68 @@
             </div>
         </section>
 
+        <section class="guia-iniciante" id="guia" aria-labelledby="titulo-guia">
+            <div class="conteudo-secao">
+                <p class="rotulo-secao">Para começar</p>
+                <h2 id="titulo-guia">Um guia rápido para novos fãs</h2>
+                <p class="descricao-secao">Três ideias ajudam a entender o mundo de Naruto sem precisar conhecer a série.</p>
+
+                <div class="cartoes-guia">
+                    <article class="cartao-guia">
+                        <span class="numero-guia">01</span>
+                        <h3>Quem é Naruto?</h3>
+                        <p>Um jovem ninja de Konoha, a Vila Oculta da Folha. Ele quer se tornar Hokage e conquistar o respeito das pessoas ao seu redor.</p>
+                    </article>
+                    <article class="cartao-guia">
+                        <span class="numero-guia">02</span>
+                        <h3>O que é uma vila ninja?</h3>
+                        <p>É o lar e centro de treinamento dos ninjas de uma região. Cada vila tem seus próprios líderes, tradições e habilidades.</p>
+                    </article>
+                    <article class="cartao-guia">
+                        <span class="numero-guia">03</span>
+                        <h3>O que significa Hokage?</h3>
+                        <p>É o título dado ao líder de Konoha, responsável por proteger a vila e orientar seus ninjas.</p>
+                    </article>
+                </div>
+
+                <div class="explorar-site">
+                    <p><strong>Quer explorar mais?</strong> Conheça as <a href="#aldeias">aldeias</a> e os <a href="#clans">clãs</a> para descobrir como esse universo se organiza.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="personagens" id="personagens" aria-labelledby="titulo-personagens">
+            <div class="conteudo-secao">
+                <p class="rotulo-secao">Conheça o elenco</p>
+                <h2 id="titulo-personagens">Personagens para conhecer primeiro</h2>
+                <p class="descricao-secao">Alguns rostos conhecidos de Konoha, apresentados sem revelar momentos importantes da história.</p>
+
+                <div class="cartoes-personagens">
+                    <article class="cartao-personagem">
+                        <img src="./assets/imgs/naruto-lamen.png" alt="Naruto Uzumaki com seus hashis">
+                        <div><h3>Naruto Uzumaki</h3><p>Um ninja persistente que sonha em se tornar Hokage.</p></div>
+                    </article>
+                    <article class="cartao-personagem">
+                        <img src="./assets/imgs/uchiha-img.png" alt="Sasuke Uchiha">
+                        <div><h3>Sasuke Uchiha</h3><p>Um talento dedicado ao treinamento e integrante do Time 7.</p></div>
+                    </article>
+                    <article class="cartao-personagem">
+                        <img src="./assets/imgs/yamanaka-img.png" alt="Ino Yamanaka">
+                        <div><h3>Ino Yamanaka</h3><p>Uma kunoichi confiante, conhecida por suas técnicas mentais.</p></div>
+                    </article>
+                    <article class="cartao-personagem">
+                        <img src="./assets/imgs/nara-img.png" alt="Shikamaru Nara">
+                        <div><h3>Shikamaru Nara</h3><p>Um estrategista brilhante que prefere resolver desafios com calma.</p></div>
+                    </article>
+                </div>
+            </div>
+        </section>
         <section class="historia" id="historia" aria-labelledby="titulo-historia">
             <div class="conteudo-secao">
                 <p class="rotulo-secao">A jornada</p>
                 <h2 id="titulo-historia">A história de Naruto</h2>
-                <p class="descricao-secao">Três fases que moldaram o shinobi mais improvável de Konoha.</p>
+                <p class="descricao-secao">Uma visão geral de etapas da jornada de Naruto.</p>
+                <aside class="aviso-spoiler"><strong>Aviso de spoilers:</strong> esta seção comenta fases e acontecimentos da história. O guia acima não revela detalhes importantes.</aside>
 
                 <div class="cartoes-historia">
                     <article class="cartao-historia">
