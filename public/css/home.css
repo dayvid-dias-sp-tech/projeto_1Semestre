@@ -2,8 +2,18 @@
 
 :root {
     font-family: 'Barlow', Arial, sans-serif;
-    color: #24252a;
+    color: #E8EAF0;
     scroll-behavior: smooth;
+    color-scheme: dark;
+    --cor-fundo: #0B0E13;
+    --cor-sidebar: #10151D;
+    --cor-card: #151B25;
+    --cor-borda: #252E3B;
+    --cor-titulo: #E8EAF0;
+    --cor-secundaria: #A0A8B5;
+    --cor-primaria: #E87532;
+    --cor-hover: #F28B45;
+    --cor-destaque: #A83232;
 }
 
 * {
@@ -13,6 +23,8 @@
 body {
     margin: 0;
     min-width: 320px;
+    color: var(--cor-titulo);
+    background: var(--cor-fundo);
 }
 
 a {
@@ -28,11 +40,11 @@ a {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 12px;
-    background: #fff;
+    background: var(--cor-sidebar);
     position: sticky;
     top: 0;
     z-index: 2;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--cor-borda);
 }
 
 .marca {
@@ -55,7 +67,7 @@ a {
     flex-wrap: wrap;
     justify-content: center;
     gap: 30px;
-    color: #596070;
+    color: var(--cor-secundaria);
     font-size: 12px;
 }
 
@@ -65,7 +77,7 @@ a {
 
 .navegacao-principal a:hover,
 .navegacao-principal .link-ativo {
-    color: #f36a18;
+    color: var(--cor-hover);
 }
 
 .acoes-cabecalho {
@@ -93,19 +105,20 @@ a {
 }
 
 .botao-claro {
-    border: 1px solid #e8e9ec;
-    background: #fff;
+    border: 1px solid var(--cor-borda);
+    background: var(--cor-card);
+    color: var(--cor-titulo);
 }
 
 .botao-laranja {
-    background: #ff7014;
+    background: var(--cor-primaria);
     color: #FFFFFF;
 }
 
 .botao-azul {
-    background: #122654;
+    background: var(--cor-sidebar);
     color: #fff;
-    border: 1px solid #a7b5d4;
+    border: 1px solid var(--cor-borda);
 }
 
 #inicio {
@@ -115,7 +128,7 @@ a {
     align-items: center;
     overflow: hidden;
     color: #fff;
-    background: linear-gradient(90deg, rgba(22, 20, 20, .55), rgba(25, 22, 21, .38)), url('../assets/imgs/naruto-home.png') center/cover, #39312a;
+    background: linear-gradient(90deg, rgb(11 14 19 / 88%), rgb(46 12 17 / 48%)), url('../assets/imgs/naruto-home.png') center/cover, var(--cor-fundo);
 }
 
 .conteudo-destaque {
@@ -141,7 +154,7 @@ a {
     align-items: center;
     gap: 9px;
     margin: 0 0 18px;
-    color: #ff7b24;
+    color: var(--cor-primaria);
     font-size: 10px;
     letter-spacing: 1.2px;
     font-weight: 700;
@@ -150,7 +163,7 @@ a {
 .texto-destaque .etiqueta span {
     width: 12px;
     height: 2px;
-    background: #ff7b24;
+    background: var(--cor-primaria);
 }
 
 h1 {
@@ -164,7 +177,7 @@ h1 {
 .introducao {
     max-width: 490px;
     margin: 0;
-    color: #e0dfe0;
+    color: var(--cor-secundaria);
     font-size: 15px;
     line-height: 1.65;
 }
@@ -181,7 +194,8 @@ h1 {
     max-width: 400px;
     overflow: hidden;
     border-radius: 12px;
-    background: #101e45;
+    background: var(--cor-card);
+    border: 1px solid var(--cor-borda);
     box-shadow: 0 18px 50px #0006;
 }
 
@@ -211,7 +225,7 @@ h1 {
 }
 
 .etiqueta-destaque {
-    color: #ff9b37;
+    color: var(--cor-hover);
     font-size: 9px;
     letter-spacing: .5px;
     white-space: nowrap;
@@ -237,7 +251,7 @@ h1 {
 
 .sobre p {
     max-width: 550px;
-    color: #72747c;
+    color: var(--cor-secundaria);
     line-height: 1.6;
 }
 
@@ -254,26 +268,26 @@ h1 {
 
 .historia {
     color: #f5f6f8;
-    background: #171717;
+    background: var(--cor-fundo);
 }
 
 .aldeias {
     padding: 54px 0 58px;
     scroll-margin-top: 82px;
-    color: #20242b;
-    background: #f0f2f5;
+    color: var(--cor-titulo);
+    background: var(--cor-sidebar);
 }
 
 .rotulo-secao {
     margin: 0 0 8px;
-    color: #ff7b24;
+    color: var(--cor-primaria);
     font-size: 10px;
     letter-spacing: .8px;
     text-transform: uppercase;
 }
 
 .aldeias .rotulo-secao {
-    color: #26395f;
+    color: var(--cor-titulo);
 }
 
 .conteudo-secao > h2 {
@@ -293,7 +307,7 @@ h1 {
     padding: 54px 0 58px;
     scroll-margin-top: 82px;
     color: #f5f6f8;
-    background: #171717;
+    background: var(--cor-fundo);
 }
 
 .cartoes-guia {
@@ -306,13 +320,13 @@ h1 {
 .cartao-guia {
     flex: 1 1 220px;
     padding: 18px;
-    border: 1px solid rgb(255 255 255 / 10%);
+    border: 1px solid var(--cor-borda);
     border-radius: 8px;
-    background: #202d41;
+    background: var(--cor-card);
 }
 
 .numero-guia {
-    color: #ff8a31;
+    color: var(--cor-primaria);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: .8px;
@@ -326,7 +340,7 @@ h1 {
 .cartao-guia p,
 .explorar-site p {
     margin: 0;
-    color: #c1cad8;
+    color: var(--cor-secundaria);
     font-size: 12px;
     line-height: 1.6;
 }
@@ -334,13 +348,13 @@ h1 {
 .explorar-site {
     margin-top: 14px;
     padding: 15px 18px;
-    border-left: 3px solid #ff7014;
+    border-left: 3px solid var(--cor-primaria);
     border-radius: 4px;
-    background: #202d41;
+    background: var(--cor-card);
 }
 
 .explorar-site a {
-    color: #ff9b37;
+    color: var(--cor-hover);
     text-decoration: underline;
     text-underline-offset: 3px;
 }
@@ -348,16 +362,16 @@ h1 {
 .personagens {
     padding: 54px 0 58px;
     scroll-margin-top: 82px;
-    color: #20242b;
-    background: #f0f2f5;
+    color: var(--cor-titulo);
+    background: var(--cor-sidebar);
 }
 
 .personagens .rotulo-secao {
-    color: #26395f;
+    color: var(--cor-titulo);
 }
 
 .personagens .descricao-secao {
-    color: #707b8a;
+    color: var(--cor-secundaria);
 }
 
 .controles-carrossel {
@@ -366,7 +380,7 @@ h1 {
     justify-content: space-between;
     gap: 12px;
     margin-top: 22px;
-    color: #707b8a;
+    color: var(--cor-secundaria);
     font-size: 12px;
 }
 
@@ -378,10 +392,10 @@ h1 {
 .botao-carrossel {
     width: 34px;
     height: 34px;
-    border: 1px solid #d8dce3;
+    border: 1px solid var(--cor-borda);
     border-radius: 50%;
-    background: #fff;
-    color: #26395f;
+    background: var(--cor-card);
+    color: var(--cor-titulo);
     font-size: 22px;
     cursor: pointer;
 }
@@ -404,9 +418,9 @@ h1 {
 .cartao-personagem {
     flex: 0 0 270px;
     overflow: hidden;
-    border: 1px solid #e1e4e9;
+    border: 1px solid var(--cor-borda);
     border-radius: 8px;
-    background: #fff;
+    background: var(--cor-card);
     transition: transform .18s ease, box-shadow .18s ease;
 }
 
@@ -444,14 +458,14 @@ h1 {
 }
 
 .texto-cartao-personagem > span:not(.link-detalhes) {
-    color: #707b8a;
+    color: var(--cor-secundaria);
     font-size: 12px;
     line-height: 1.5;
 }
 
 .link-detalhes {
     margin-top: 7px;
-    color: #d95b0a;
+    color: var(--cor-hover);
     font-size: 11px;
     font-weight: 700;
 }
@@ -463,7 +477,7 @@ h1 {
 .detalhe-personagem {
     margin: 0;
     padding: 0 15px 16px;
-    color: #596070;
+    color: var(--cor-secundaria);
     font-size: 12px;
     line-height: 1.6;
 }
@@ -476,10 +490,10 @@ h1 {
 .aviso-spoiler {
     margin-top: 18px;
     padding: 12px 15px;
-    border-left: 3px solid #ff7014;
+    border-left: 3px solid var(--cor-destaque);
     border-radius: 4px;
-    background: #202d41;
-    color: #d8deea;
+    background: var(--cor-card);
+    color: var(--cor-secundaria);
     font-size: 12px;
     line-height: 1.5;
 }
@@ -497,7 +511,8 @@ h1 {
     flex-direction: column;
     overflow: hidden;
     border-radius: 8px;
-    background: #202d41;
+    background: var(--cor-card);
+    border: 1px solid var(--cor-borda);
 }
 
 .cartao-historia > img {
@@ -520,7 +535,7 @@ h1 {
     align-items: center;
     gap: 8px;
     margin: 0 0 8px;
-    color: #ff8a31;
+    color: var(--cor-primaria);
     font-size: 9px;
     letter-spacing: .6px;
     text-transform: uppercase;
@@ -529,7 +544,7 @@ h1 {
 .fase-historia span {
     width: 12px;
     height: 2px;
-    background: #ff8a31;
+    background: var(--cor-primaria);
 }
 
 .cartao-historia h3,
@@ -543,13 +558,13 @@ h1 {
 }
 
 .cartao-historia .texto-cartao-historia > p:last-child {
-    color: #aab4c3;
+    color: var(--cor-secundaria);
     font-size: 12px;
     line-height: 1.55;
 }
 
 .aldeias .descricao-secao {
-    color: #707b8a;
+    color: var(--cor-secundaria);
 }
 
 .aldeia-destaque {
@@ -609,8 +624,9 @@ h1 {
     min-height: 150px;
     padding: 16px;
     border-radius: 7px;
-    background: #202d41;
-    color: #f5f6f8;
+    background: var(--cor-card);
+    color: var(--cor-titulo);
+    border: 1px solid var(--cor-borda);
 }
 
 .topo-cartao-aldeia {
@@ -642,7 +658,7 @@ h1 {
 
 .cartao-aldeia > p {
     margin: 0;
-    color: #aab4c3;
+    color: var(--cor-secundaria);
     font-size: 11px;
     line-height: 1.5;
 }
@@ -667,7 +683,7 @@ h1 {
     padding: 54px 0 58px;
     scroll-margin-top: 82px;
     color: #f5f6f8;
-    background: #171717;
+    background: var(--cor-fundo);
 }
 
 .cartoes-clans {
@@ -684,7 +700,8 @@ h1 {
     flex-direction: column;
     overflow: hidden;
     border-radius: 8px;
-    background: #1c1b30;
+    background: var(--cor-card);
+    border: 1px solid var(--cor-borda);
 }
 
 .arte-clan {
@@ -788,14 +805,14 @@ h1 {
 
 .texto-clan p {
     margin: 0;
-    color: #aab4c3;
+    color: var(--cor-secundaria);
     font-size: 11px;
     line-height: 1.5;
 }
 
 .texto-clan .tecnica-clan {
     margin-bottom: 4px;
-    color: #ff8a31;
+    color: var(--cor-primaria);
     font-size: 10px;
 }
 
