@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#192856">
-    <title>SysKage | Dashboard da aldeia</title>
+    <meta name="theme-color" content="#0B0E13">
+    <title>SysKage | Dashboard de desempenho</title>
     <link rel="stylesheet" href="../css/dashboardNinja.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -18,7 +18,7 @@
 
             <nav class="menu-sidebar" aria-label="Navegação do dashboard">
                 <a class="item-menu ativo" href="#visao-geral"><span aria-hidden="true">▦</span>Dashboard</a>
-                <a class="item-menu" href="#indicadores"><span aria-hidden="true">♙</span>Indicadores</a>
+                <a class="item-menu" href="#indicadores"><span aria-hidden="true">◷</span>Indicadores</a>
                 <a class="item-menu" href="#desempenho"><span aria-hidden="true">▤</span>Desempenho</a>
                 <a class="item-menu" href="#ranking"><span aria-hidden="true">♛</span>Ranking do quiz</a>
                 <a class="item-menu" href="../cadastroNinja.html"><span class="icone-perfil-menu" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"></circle><path d="M4.5 20c.5-4 3.2-6 7.5-6s7 2 7.5 6"></path></svg></span>Perfil Ninja</a>
@@ -35,13 +35,13 @@
         <main class="conteudo-dashboard">
             <header class="cabecalho-dashboard" id="visao-geral">
                 <div>
-                    <p class="caminho-dashboard">Administração <span>/</span> <strong>Visão geral</strong></p>
-                    <h1>Dashboard da aldeia</h1>
-                    <p class="subtitulo-dashboard">Acompanhe seus ninjas, equipes e missões em um só lugar.</p>
+                    <p class="caminho-dashboard">SysKage <span>/</span> <strong>Desempenho</strong></p>
+                    <h1>Dashboard de desempenho</h1>
+                    <p class="subtitulo-dashboard">Acompanhe sua evolução nos quizzes do universo ninja.</p>
                 </div>
                 <div class="perfil-kage">
-                    <strong>Kage: <span id="b_usuario">Akira Tanaka</span></strong>
-                    <span>Konohagakure</span>
+                    <strong>Ninja: <span id="b_usuario">Visitante</span></strong>
+                    <span>Resumo de participação</span>
                 </div>
             </header>
 
@@ -51,213 +51,234 @@
                 <a href="../cadastroNinja.html">Criar perfil</a>
             </aside>
 
-            <section class="resumo-indicadores" aria-label="Resumo da aldeia">
+            <section class="resumo-indicadores" aria-label="Indicadores principais">
                 <article class="cartao-resumo">
-                    <p>Ninjas cadastrados</p>
-                    <div><strong>128</strong><span aria-hidden="true">♙</span></div>
+                    <div class="rotulo-kpi"><span class="icone-kpi" aria-hidden="true">✦</span><p>Pontuação total</p></div>
+                    <div class="valor-kpi"><strong>1.420</strong><span>pontos</span></div>
+                    <p class="detalhe-kpi">Somatório nos quizzes</p>
                 </article>
                 <article class="cartao-resumo">
-                    <p>Equipes formadas</p>
-                    <div><strong>24</strong><span aria-hidden="true">⬡</span></div>
+                    <div class="rotulo-kpi"><span class="icone-kpi" aria-hidden="true">✓</span><p>Taxa de acertos</p></div>
+                    <div class="valor-kpi"><strong>76%</strong></div>
+                    <p class="detalhe-kpi">912 acertos em 1.200 respostas</p>
                 </article>
-                <article class="cartao-resumo">
-                    <p>Missões em andamento</p>
-                    <div><strong>24</strong><span aria-hidden="true">▤</span></div>
-                </article>
-                <article class="cartao-resumo">
-                    <p>Missões concluídas · 30 dias</p>
-                    <div><strong>48</strong><span class="icone-laranja" aria-hidden="true">✧</span></div>
+                <article class="cartao-resumo kpi-ranking">
+                    <div class="rotulo-kpi"><span class="icone-kpi" aria-hidden="true">♛</span><p>Posição no ranking</p></div>
+                    <div class="valor-kpi"><strong>6º</strong></div>
+                    <p class="detalhe-kpi">Entre os participantes</p>
                 </article>
             </section>
 
-            <section class="paineis-graficos" id="indicadores" aria-label="Indicadores da aldeia">
-                <article class="painel-grafico">
+            <section class="paineis-graficos" id="indicadores" aria-label="Gráficos de desempenho">
+                <article class="painel-grafico painel-categorias">
                     <div class="titulo-painel">
-                        <div><h2>Ninjas mais fortes</h2><p>Cinco maiores poderes de combate da aldeia</p></div>
+                        <div><p class="rotulo-painel">VISÃO POR TEMA</p><h2>Desempenho por categoria</h2><p>Percentual de respostas corretas em cada tema</p></div>
                     </div>
-                    <div class="area-grafico"><canvas id="graficoNinjas" aria-label="Gráfico de poder dos ninjas"></canvas></div>
+                    <div class="area-grafico"><canvas id="graficoCategoria" role="img" aria-label="Gráfico de barras verticais com percentual de acertos por categoria"></canvas></div>
                 </article>
 
-                <article class="painel-grafico">
+                <article class="painel-grafico painel-respostas">
                     <div class="titulo-painel">
-                        <div><h2>Atributos do ninja mais forte</h2><p>Comparação de atributos · escala 0–100</p></div>
+                        <div><p class="rotulo-painel">PRECISÃO GERAL</p><h2>Distribuição das respostas</h2><p>Corretas e incorretas em todos os quizzes</p></div>
                     </div>
-                    <div class="area-grafico"><canvas id="graficoAtributos" aria-label="Gráfico radar dos atributos do ninja"></canvas></div>
-                    <div class="destaque-ninja"><span class="avatar-ninja" aria-hidden="true">忍</span><span><strong>Kakashi Hatake</strong><small>Jounin · Poder 980</small></span><strong class="pontuacao-ninja">98/100</strong></div>
+                    <div class="respostas-layout">
+                        <div class="area-grafico area-rosca"><canvas id="graficoRespostas" role="img" aria-label="Gráfico de rosca comparando respostas corretas e incorretas"></canvas></div>
+                        <div class="legenda-respostas">
+                            <div><span class="marcador-legenda correto"></span><span><strong>Corretas</strong><small>912 respostas · 76%</small></span></div>
+                            <div><span class="marcador-legenda incorreto"></span><span><strong>Incorretas</strong><small>288 respostas · 24%</small></span></div>
+                            <p>Total de respostas <strong>1.200</strong></p>
+                        </div>
+                    </div>
                 </article>
 
-                <article class="painel-grafico" id="desempenho">
+                <article class="painel-grafico painel-ranking" id="ranking">
                     <div class="titulo-painel">
-                        <div><h2>Equipes mais fortes</h2><p>Poder · 3 Genins + Jounin líder</p></div>
+                        <div><p class="rotulo-painel">PLACAR DOS SHINOBI</p><h2>Ranking dos participantes</h2><p>Os cinco melhores resultados, em ordem de pontuação</p></div>
                     </div>
-                    <div class="area-grafico"><canvas id="graficoEquipes" aria-label="Gráfico de poder das equipes"></canvas></div>
+                    <div class="area-grafico"><canvas id="graficoRanking" role="img" aria-label="Gráfico de barras horizontais com os cinco participantes mais bem pontuados"></canvas></div>
                 </article>
 
-                <article class="painel-grafico painel-donut">
-                    <div class="titulo-painel"><div><h2>Missões por classificação</h2></div></div>
-                    <div class="area-grafico"><canvas id="graficoClassificacao" aria-label="Gráfico de missões por classificação"></canvas></div>
-                </article>
-
-                <article class="painel-grafico">
+                <article class="painel-grafico painel-erros" id="desempenho">
                     <div class="titulo-painel">
-                        <div><h2>Missões concluídas por mês</h2><p>Jun–Nov 2026 · novembro parcial</p></div>
+                        <div><p class="rotulo-painel">PONTOS DE ATENÇÃO</p><h2>Perguntas com mais erros</h2><p>Percentual de respostas incorretas, da maior para a menor</p></div>
                     </div>
-                    <div class="area-grafico"><canvas id="graficoMensal" aria-label="Gráfico de missões concluídas por mês"></canvas></div>
-                </article>
-
-                <article class="painel-grafico painel-donut">
-                    <div class="titulo-painel"><div><h2>Missões por status</h2></div></div>
-                    <div class="area-grafico"><canvas id="graficoStatus" aria-label="Gráfico de missões por status"></canvas></div>
+                    <div class="area-grafico"><canvas id="graficoErros" role="img" aria-label="Gráfico de barras verticais das perguntas com maior percentual de erro"></canvas></div>
                 </article>
             </section>
 
-            <section class="painel-ranking" id="ranking" aria-labelledby="titulo-ranking">
-                <div class="titulo-ranking">
-                    <h2 id="titulo-ranking">Ranking do quiz Naruto</h2>
-                    <span>5 maiores pontuações</span>
-                </div>
-                <div class="tabela-responsiva">
-                    <table>
-                        <thead><tr><th>Posição</th><th>Nome do Kage</th><th>Aldeia</th><th>Pontuação</th></tr></thead>
-                        <tbody>
-                            <tr class="primeiro-lugar"><td>01</td><td>Akira Tanaka</td><td>Konohagakure</td><td>980 pts</td></tr>
-                            <tr><td>02</td><td>Ren Kazehaya</td><td>Sunagakure</td><td>940 pts</td></tr>
-                            <tr><td>03</td><td>Mei Hoshino</td><td>Kirigakure</td><td>910 pts</td></tr>
-                            <tr><td>04</td><td>Daichi Arata</td><td>Iwagakure</td><td>870 pts</td></tr>
-                            <tr><td>05</td><td>Sora Kumoi</td><td>Kumogakure</td><td>850 pts</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
             <p class="aviso-mock">Dados demonstrativos para visualização do dashboard.</p>
         </main>
     </div>
 
     <script src="../js/perfilNinja.js"></script>
     <script>
-        if (sessionStorage.NOME_USUARIO != undefined) {
+        if (sessionStorage.NOME_USUARIO) {
             b_usuario.textContent = sessionStorage.NOME_USUARIO;
         }
 
         SysKagePerfilNinja.inicializarDashboard();
 
-        var corAzul = "#192856";
-        var corLaranja = "#ff7014";
-        var corCinza = "#dfe4ec";
+        const paletaDashboard = {
+            fundo: "#0B0E13",
+            superficie: "#151B25",
+            borda: "#252E3B",
+            laranja: "#E87532",
+            vermelho: "#A83232",
+            texto: "#E8EAF0"
+        };
 
-        new Chart(document.getElementById("graficoNinjas"), {
+        const opcoesComuns = {
+            responsive: true,
+            maintainAspectRatio: false,
+            animation: { duration: 650 },
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    backgroundColor: paletaDashboard.superficie,
+                    titleColor: paletaDashboard.texto,
+                    bodyColor: paletaDashboard.texto,
+                    borderColor: paletaDashboard.borda,
+                    borderWidth: 1,
+                    padding: 10,
+                    titleFont: { family: "Barlow", weight: "700" },
+                    bodyFont: { family: "Barlow" }
+                }
+            }
+        };
+
+        const opcoesEixos = {
+            x: {
+                ticks: { color: paletaDashboard.texto, font: { family: "Barlow", size: 11 } },
+                grid: { color: paletaDashboard.borda, drawBorder: false }
+            },
+            y: {
+                ticks: { color: paletaDashboard.texto, font: { family: "Barlow", size: 11 } },
+                grid: { color: paletaDashboard.borda, drawBorder: false }
+            }
+        };
+
+        new Chart(document.getElementById("graficoCategoria"), {
             type: "bar",
             data: {
-                labels: ["Kakashi Hatake", "Might Gai", "Asuma Sarutobi", "Kurenai Yuhi", "Yamato"],
-                datasets: [{ label: "Poder", data: [980, 930, 870, 840, 800], backgroundColor: [corLaranja, corAzul, corAzul, corAzul, corAzul], borderRadius: 4, barThickness: 9 }]
+                labels: ["Personagens", "Aldeias", "Clãs", "História"],
+                datasets: [{
+                    label: "Acertos",
+                    data: [84, 72, 68, 91],
+                    backgroundColor: [paletaDashboard.laranja, paletaDashboard.laranja, paletaDashboard.vermelho, paletaDashboard.laranja],
+                    borderRadius: 5,
+                    maxBarThickness: 46
+                }]
             },
             options: {
-                indexAxis: "y",
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
+                ...opcoesComuns,
                 scales: {
-                    x: { min: 0, max: 1000, ticks: { stepSize: 250, font: { size: 9 } }, grid: { color: corCinza } },
-                    y: { ticks: { font: { size: 9 } }, grid: { display: false } }
+                    x: { ...opcoesEixos.x, grid: { display: false }, border: { display: false } },
+                    y: { ...opcoesEixos.y, min: 0, max: 100, ticks: { ...opcoesEixos.y.ticks, stepSize: 25, callback: function (valor) { return valor + "%"; } }, border: { display: false } }
+                },
+                plugins: {
+                    ...opcoesComuns.plugins,
+                    tooltip: { ...opcoesComuns.plugins.tooltip, callbacks: { label: function (contexto) { return " " + contexto.parsed.y + "% de acertos"; } } }
                 }
             }
         });
 
-        new Chart(document.getElementById("graficoAtributos"), {
-            type: "radar",
-            data: {
-                labels: ["Ninjutsu", "Taijutsu", "Genjutsu", "Chakra", "Inteligência", "Velocidade"],
-                datasets: [{ label: "Kakashi Hatake", data: [86, 88, 82, 92, 98, 86], backgroundColor: "rgba(255, 112, 20, .2)", borderColor: corLaranja, pointBackgroundColor: corLaranja, borderWidth: 2, pointRadius: 2 }]
-            },
-            options: {
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: { r: { min: 0, max: 100, ticks: { display: false, stepSize: 20 }, pointLabels: { font: { size: 8 } }, grid: { color: corCinza }, angleLines: { color: corCinza } } }
-            }
-        });
-
-        new Chart(document.getElementById("graficoEquipes"), {
-            type: "bar",
-            data: {
-                labels: ["Time Kakashi", "Time Asuma", "Time Kurenai", "Time Guy", "Time Yamato"],
-                datasets: [{ label: "Poder total", data: [2100, 2000, 1820, 1790, 1720], backgroundColor: [corLaranja, corAzul, corAzul, corAzul, corAzul], borderRadius: 4, barThickness: 9 }]
-            },
-            options: {
-                indexAxis: "y",
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: {
-                    x: { min: 0, max: 2200, ticks: { stepSize: 500, font: { size: 9 } }, grid: { color: corCinza } },
-                    y: { ticks: { font: { size: 9 } }, grid: { display: false } }
-                }
-            }
-        });
-
-        new Chart(document.getElementById("graficoClassificacao"), {
+        new Chart(document.getElementById("graficoRespostas"), {
             type: "doughnut",
             data: {
-                labels: ["Rank D", "Rank C", "Rank B", "Rank A", "Rank S"],
-                datasets: [{ data: [72, 54, 36, 15, 3], backgroundColor: [corLaranja, "#f5c842", corAzul, "#5976b9", "#101a36"], borderWidth: 0, hoverOffset: 4 }]
+                labels: ["Corretas", "Incorretas"],
+                datasets: [{
+                    data: [912, 288],
+                    backgroundColor: [paletaDashboard.laranja, paletaDashboard.vermelho],
+                    borderColor: paletaDashboard.superficie,
+                    borderWidth: 4,
+                    hoverOffset: 7
+                }]
             },
-            options: { maintainAspectRatio: false, cutout: "62%", plugins: { legend: { position: "right", labels: { boxWidth: 8, boxHeight: 8, padding: 8, font: { size: 9 } } } } },
+            options: {
+                ...opcoesComuns,
+                cutout: "72%",
+                plugins: {
+                    ...opcoesComuns.plugins,
+                    tooltip: { ...opcoesComuns.plugins.tooltip, callbacks: { label: function (contexto) { return " " + contexto.label + ": " + contexto.parsed + " respostas (" + Math.round(contexto.parsed / 1200 * 100) + "%)"; } } }
+                }
+            },
             plugins: [{
-                id: "totalMissaoClassificacao",
+                id: "totalRespostas",
                 afterDraw: function (grafico) {
+                    var area = grafico.chartArea;
                     var contexto = grafico.ctx;
-                    var centroX = (grafico.chartArea.left + grafico.chartArea.right) / 2;
-                    var centroY = (grafico.chartArea.top + grafico.chartArea.bottom) / 2;
+                    var x = (area.left + area.right) / 2;
+                    var y = (area.top + area.bottom) / 2;
                     contexto.save();
                     contexto.textAlign = "center";
-                    contexto.fillStyle = corAzul;
-                    contexto.font = "bold 17px Barlow, Arial";
-                    contexto.fillText("180", centroX, centroY);
-                    contexto.fillStyle = "#7b8494";
-                    contexto.font = "9px Barlow, Arial";
-                    contexto.fillText("missões", centroX, centroY + 13);
+                    contexto.fillStyle = paletaDashboard.laranja;
+                    contexto.font = "700 23px Barlow, Arial";
+                    contexto.fillText("76%", x, y - 2);
+                    contexto.fillStyle = paletaDashboard.texto;
+                    contexto.font = "11px Barlow, Arial";
+                    contexto.fillText("de acertos", x, y + 17);
                     contexto.restore();
                 }
             }]
         });
 
-        new Chart(document.getElementById("graficoMensal"), {
-            type: "line",
+        new Chart(document.getElementById("graficoRanking"), {
+            type: "bar",
             data: {
-                labels: ["Jun", "Jul", "Ago", "Set", "Out", "Nov"],
-                datasets: [{ label: "Missões concluídas", data: [10, 12, 14, 18, 24, 30], borderColor: corLaranja, backgroundColor: "rgba(255, 112, 20, .1)", fill: true, tension: .3, pointRadius: 2, pointBackgroundColor: corLaranja, borderWidth: 2 }]
+                labels: ["Akira Tanaka", "Ren Kazehaya", "Mei Hoshino", "Daichi Arata", "Sora Kumoi"],
+                datasets: [{
+                    label: "Pontuação",
+                    data: [980, 940, 910, 870, 850],
+                    backgroundColor: [paletaDashboard.laranja, paletaDashboard.texto, paletaDashboard.vermelho, paletaDashboard.borda, paletaDashboard.borda],
+                    borderRadius: 4,
+                    maxBarThickness: 22
+                }]
             },
             options: {
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
+                ...opcoesComuns,
+                indexAxis: "y",
                 scales: {
-                    x: { ticks: { font: { size: 9 } }, grid: { display: false } },
-                    y: { min: 0, max: 40, ticks: { stepSize: 10, font: { size: 9 } }, grid: { color: corCinza } }
+                    x: { ...opcoesEixos.x, min: 0, max: 1000, ticks: { ...opcoesEixos.x.ticks, stepSize: 250 }, border: { display: false } },
+                    y: { ...opcoesEixos.y, reverse: true, grid: { display: false }, border: { display: false } }
+                },
+                plugins: {
+                    ...opcoesComuns.plugins,
+                    tooltip: { ...opcoesComuns.plugins.tooltip, callbacks: { label: function (contexto) { return " " + contexto.parsed.x + " pontos"; } } }
                 }
             }
         });
 
-        new Chart(document.getElementById("graficoStatus"), {
-            type: "doughnut",
+        const perguntasComMaisErros = [
+            "Qual é a origem do clã Uzumaki?",
+            "De qual aldeia Gaara é Kazekage?",
+            "Onde acontece o confronto final entre Naruto e Sasuke?",
+            "A qual clã pertence Shikamaru?",
+            "Qual habilidade é característica do clã Hyūga?"
+        ];
+
+        new Chart(document.getElementById("graficoErros"), {
+            type: "bar",
             data: {
-                labels: ["Disponíveis", "Em andamento", "Concluídas", "Canceladas"],
-                datasets: [{ data: [36, 24, 108, 12], backgroundColor: [corAzul, corLaranja, "#303b51", "#c9ced7"], borderWidth: 0, hoverOffset: 4 }]
+                labels: [["Origem do clã", "Uzumaki"], ["Aldeia de", "Gaara"], ["Vale do", "Fim"], ["Clã de", "Shikamaru"], ["Habilidade", "Hyūga"]],
+                datasets: [{
+                    label: "Respostas incorretas",
+                    data: [68, 54, 47, 39, 34],
+                    backgroundColor: [paletaDashboard.vermelho, paletaDashboard.vermelho, paletaDashboard.laranja, paletaDashboard.laranja, paletaDashboard.laranja],
+                    borderRadius: 5,
+                    maxBarThickness: 38
+                }]
             },
-            options: { maintainAspectRatio: false, cutout: "62%", plugins: { legend: { position: "right", labels: { boxWidth: 8, boxHeight: 8, padding: 8, font: { size: 9 } } } } },
-            plugins: [{
-                id: "totalMissaoStatus",
-                afterDraw: function (grafico) {
-                    var contexto = grafico.ctx;
-                    var centroX = (grafico.chartArea.left + grafico.chartArea.right) / 2;
-                    var centroY = (grafico.chartArea.top + grafico.chartArea.bottom) / 2;
-                    contexto.save();
-                    contexto.textAlign = "center";
-                    contexto.fillStyle = corAzul;
-                    contexto.font = "bold 17px Barlow, Arial";
-                    contexto.fillText("180", centroX, centroY);
-                    contexto.fillStyle = "#7b8494";
-                    contexto.font = "9px Barlow, Arial";
-                    contexto.fillText("missões", centroX, centroY + 13);
-                    contexto.restore();
+            options: {
+                ...opcoesComuns,
+                scales: {
+                    x: { ...opcoesEixos.x, grid: { display: false }, border: { display: false } },
+                    y: { ...opcoesEixos.y, min: 0, max: 100, ticks: { ...opcoesEixos.y.ticks, stepSize: 25, callback: function (valor) { return valor + "%"; } }, border: { display: false } }
+                },
+                plugins: {
+                    ...opcoesComuns.plugins,
+                    tooltip: { ...opcoesComuns.plugins.tooltip, callbacks: { title: function (itens) { return perguntasComMaisErros[itens[0].dataIndex]; }, label: function (contexto) { return " " + contexto.parsed.y + "% de respostas incorretas"; } } }
                 }
-            }]
+            }
         });
     </script>
 </body>
