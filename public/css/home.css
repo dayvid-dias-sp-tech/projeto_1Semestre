@@ -751,6 +751,26 @@ h1 {
     border: 1px solid var(--cor-borda);
 }
 
+.cartao-clan:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgb(28 41 67 / 12%);
+}
+
+.cartao-clan summary {
+    display: block;
+    cursor: pointer;
+    list-style: none;
+}
+
+.cartao-clan summary::-webkit-details-marker {
+    display: none;
+}
+
+.cartao-clan summary:focus-visible {
+    outline: 2px solid var(--cor-hover);
+    outline-offset: 4px;
+}
+
 .arte-clan {
     position: relative;
     display: flex;
@@ -861,5 +881,33 @@ h1 {
     margin-bottom: 4px;
     color: var(--cor-primaria);
     font-size: 10px;
+}
+
+.texto-clan .link-detalhes-clan {
+    display: block;
+    margin-top: 12px;
+    color: var(--cor-hover);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.cartao-clan[open] .link-detalhes-clan::after {
+    content: " (fechar)";
+}
+
+.detalhes-clan {
+    padding: 0 13px 13px;
+    border-top: 1px solid var(--cor-borda);
+}
+
+.detalhes-clan p {
+    margin: 10px 0 0;
+    color: var(--cor-secundaria);
+    font-size: 11px;
+    line-height: 1.55;
+}
+
+.detalhes-clan strong {
+    color: var(--cor-titulo);
 }
 
