@@ -3,90 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#192856">
-    <title>SysKage | Cadastro da vila</title>
+    <meta name="theme-color" content="#0B0E13">
+    <title>SysKage | Perfil Ninja</title>
     <link rel="stylesheet" href="./css/cadastroNinja.css">
+    <link rel="icon" href="./assets/icon/favicon2.ico">
+    <script src="./js/perfilNinja.js" defer></script>
 </head>
 <body>
-    <main class="pagina-login pagina-cadastro">
-        <section class="painel-apresentacao" aria-label="Apresentação SysKage">
-            <a class="marca" href="home.html" aria-label="SysKage, página inicial">
-                <img class="logo-syskage" src="./assets/imgs/logo-syskage-header.png" alt="SysKage">
-            </a>
+    <header class="cabecalho-perfil">
+        <a class="marca-perfil" href="home.html" aria-label="SysKage, página inicial">
+            <img src="./assets/imgs/logo-syskage-header.png" alt="SysKage">
+        </a>
+        <a class="link-voltar" href="./dashboard/dashboardNinjas.html">Cancelar e voltar à dashboard</a>
+    </header>
 
-            <div class="apresentacao-conteudo">
-                <p class="chamada">Estratégia. Liderança. Legado.</p>
-                <h1>Construa o legado da sua vila.</h1>
-                <img class="imagem-destaque" src="./assets/imgs/naruto-home.png" alt="Ilustração de personagens do universo ninja">
-                <p class="legenda"><span aria-hidden="true"></span>Lidere sua vila. Comande seu destino.</p>
-            </div>
+    <main class="conteudo-perfil">
+        <section class="introducao-perfil" aria-labelledby="titulo-perfil">
+            <p class="chamada-perfil">Sua identidade shinobi</p>
+            <h1 id="titulo-perfil">Criar perfil ninja</h1>
+            <p>Conte um pouco sobre sua origem, habilidades e preferências no mundo ninja. Você pode editar essas informações depois.</p>
+            <p class="nota-obrigatorios"><span aria-hidden="true">*</span> Campos obrigatórios</p>
         </section>
 
-        <section class="painel-formulario" aria-labelledby="titulo-cadastro">
-            <div class="formulario-conteudo">
-                <h2 id="titulo-cadastro">Cadastre sua vila</h2>
-                <p class="subtitulo">Crie sua conta administrativa e comece a organizar sua nação ninja.</p>
-
-                <form class="formulario formulario-cadastro" onsubmit="return validarCadastro()">
-                    <label for="vila_input">Nome da vila</label>
-                    <input id="vila_input" name="vila" type="text" placeholder="Ex.: Vila do Horizonte" autocomplete="organization" required>
-
-                    <label for="nacao_input">País ou nação</label>
-                    <input id="nacao_input" name="nacao" type="text" placeholder="Ex.: País do Fogo" required>
-
-                    <label for="responsavel_input">Nome completo do responsável</label>
-                    <input id="responsavel_input" name="responsavel" type="text" placeholder="Ex.: Akira Tanaka" autocomplete="name" required>
-
-                    <label for="email_input">E-mail</label>
-                    <input id="email_input" name="email" type="email" placeholder="voce@suavila.com" autocomplete="email" required>
-
-                    <label for="senha_input">Senha</label>
-                    <div class="campo-senha">
-                        <input id="senha_input" name="senha" type="password" placeholder="Crie uma senha segura" autocomplete="new-password" minlength="8" required>
-                        <button class="alternar-senha" type="button" aria-label="Mostrar ou ocultar senha" onclick="alternarSenha(senha_input)">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.3-5 9.5-5 9.5 5 9.5 5-3.3 5-9.5 5-9.5-5-9.5-5Z"/><circle cx="12" cy="12" r="2.5"/></svg>
-                        </button>
+        <form class="formulario-perfil" id="form-perfil-ninja" novalidate>
+            <fieldset class="grupo-perfil">
+                <legend>Origem</legend>
+                <div class="campos-linha">
+                    <div class="campo-perfil">
+                        <label for="aldeia_perfil">Aldeia de origem <span aria-hidden="true">*</span></label>
+                        <select id="aldeia_perfil" name="aldeia" required>
+                            <option value="">Selecione sua aldeia</option>
+                            <option value="Konohagakure">Konohagakure (Vila da Folha)</option>
+                            <option value="Sunagakure">Sunagakure (Vila da Areia)</option>
+                            <option value="Kirigakure">Kirigakure (Vila da Névoa)</option>
+                            <option value="Kumogakure">Kumogakure (Vila da Nuvem)</option>
+                            <option value="Iwagakure">Iwagakure (Vila da Pedra)</option>
+                            <option value="Outra / Sem aldeia">Outra / Sem aldeia</option>
+                        </select>
                     </div>
-
-                    <label for="confirmacao_senha_input">Confirme sua senha</label>
-                    <div class="campo-senha">
-                        <input id="confirmacao_senha_input" name="confirmacao_senha" type="password" placeholder="Digite a senha novamente" autocomplete="new-password" minlength="8" required>
-                        <button class="alternar-senha" type="button" aria-label="Mostrar ou ocultar confirmação de senha" onclick="alternarSenha(confirmacao_senha_input)">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.3-5 9.5-5 9.5 5 9.5 5-3.3 5-9.5 5-9.5-5-9.5-5Z"/><circle cx="12" cy="12" r="2.5"/></svg>
-                        </button>
+                    <div class="campo-perfil">
+                        <label for="cla_perfil">Clã <span aria-hidden="true">*</span></label>
+                        <select id="cla_perfil" name="cla" required>
+                            <option value="">Selecione seu clã</option>
+                            <option>Uchiha</option>
+                            <option>Uzumaki</option>
+                            <option>Hyūga</option>
+                            <option>Nara</option>
+                            <option>Akimichi</option>
+                            <option>Yamanaka</option>
+                            <option>Aburame</option>
+                            <option>Inuzuka</option>
+                            <option>Outros</option>
+                            <option>Sem clã definido</option>
+                        </select>
                     </div>
+                </div>
+            </fieldset>
 
-                    <button class="botao-entrar" type="submit">Criar minha vila</button>
-                    <p class="mensagem-erro" id="mensagem_erro" role="alert" aria-live="polite"></p>
-                </form>
+            <fieldset class="grupo-perfil">
+                <legend>Aptidões ninja</legend>
+                <div class="campo-perfil">
+                    <span class="rotulo-campo" id="rotulo-chakra">Natureza de chakra <span aria-hidden="true">*</span></span>
+                    <p class="ajuda-campo">Selecione uma ou mais naturezas.</p>
+                    <div class="opcoes-chakra" id="opcoes-chakra" role="group" aria-labelledby="rotulo-chakra" aria-describedby="erro-chakra" aria-required="true">
+                        <label class="opcao-selecao"><input type="checkbox" name="naturezaChakra" value="Katon (Fogo)"><span>Katon <small>Fogo</small></span></label>
+                        <label class="opcao-selecao"><input type="checkbox" name="naturezaChakra" value="Fūton (Vento)"><span>Fūton <small>Vento</small></span></label>
+                        <label class="opcao-selecao"><input type="checkbox" name="naturezaChakra" value="Raiton (Raio)"><span>Raiton <small>Raio</small></span></label>
+                        <label class="opcao-selecao"><input type="checkbox" name="naturezaChakra" value="Doton (Terra)"><span>Doton <small>Terra</small></span></label>
+                        <label class="opcao-selecao"><input type="checkbox" name="naturezaChakra" value="Suiton (Água)"><span>Suiton <small>Água</small></span></label>
+                    </div>
+                    <span class="erro-campo" id="erro-chakra" aria-live="polite"></span>
+                </div>
 
-                <p class="link-cadastro">Já possui uma conta? <a href="loginNinja.html">Entrar</a></p>
+                <div class="campo-perfil campo-especialidade">
+                    <label for="especialidade_perfil">Especialidade ninja <span aria-hidden="true">*</span></label>
+                    <select id="especialidade_perfil" name="especialidade" required>
+                        <option value="">Selecione sua especialidade</option>
+                        <option>Ninjutsu</option>
+                        <option>Taijutsu</option>
+                        <option>Genjutsu</option>
+                        <option>Bukijutsu</option>
+                        <option>Fūinjutsu</option>
+                        <option>Medicina ninja</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <fieldset class="grupo-perfil">
+                <legend>Preferências e linhagem</legend>
+                <div class="campos-linha">
+                    <div class="campo-perfil">
+                        <label for="personagem_perfil">Personagem favorito <span class="opcional">Opcional</span></label>
+                        <select id="personagem_perfil" name="personagemFavorito">
+                            <option value="">Selecione um personagem</option>
+                            <option>Naruto Uzumaki</option>
+                            <option>Sasuke Uchiha</option>
+                            <option>Sakura Haruno</option>
+                            <option>Kakashi Hatake</option>
+                            <option>Hinata Hyūga</option>
+                            <option>Itachi Uchiha</option>
+                            <option>Gaara</option>
+                            <option>Shikamaru Nara</option>
+                            <option>Jiraiya</option>
+                            <option>Rock Lee</option>
+                            <option>Minato Namikaze</option>
+                            <option>Outro</option>
+                        </select>
+                    </div>
+                    <div class="campo-perfil">
+                        <label for="kekkei_perfil">Kekkei Genkai <span class="opcional">Opcional</span></label>
+                        <select id="kekkei_perfil" name="kekkeiGenkai">
+                            <option value="">Selecione uma opção</option>
+                            <option>Sharingan</option>
+                            <option>Byakugan</option>
+                            <option>Rinnegan</option>
+                            <option>Mokuton</option>
+                            <option>Hyōton</option>
+                            <option>Yōton</option>
+                            <option>Shakuton</option>
+                            <option>Não possui / Não definido</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="acoes-perfil">
+                <a class="botao-secundario" href="./dashboard/dashboardNinjas.html">Cancelar</a>
+                <button class="botao-salvar" id="botao-salvar-perfil" type="submit">Criar perfil ninja</button>
             </div>
-        </section>
+            <p class="feedback-perfil" id="feedback-perfil" role="status" aria-live="polite"></p>
+        </form>
     </main>
-
-    <script>
-        function alternarSenha(campo) {
-            if (campo.type == "password") {
-                campo.type = "text";
-            } else {
-                campo.type = "password";
-            }
-        }
-
-        function validarCadastro() {
-            var senha = senha_input.value;
-            var confirmacao = confirmacao_senha_input.value;
-            mensagem_erro.innerHTML = "";
-
-            if (senha !== confirmacao) {
-                mensagem_erro.innerHTML = "As senhas não coincidem.";
-                return false;
-            }
-
-            mensagem_erro.innerHTML = "O cadastro de novas vilas ainda não está disponível.";
-            return false;
-        }
-    </script>
 </body>
 </html>

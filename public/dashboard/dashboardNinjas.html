@@ -21,6 +21,7 @@
                 <a class="item-menu" href="#indicadores"><span aria-hidden="true">♙</span>Indicadores</a>
                 <a class="item-menu" href="#desempenho"><span aria-hidden="true">▤</span>Desempenho</a>
                 <a class="item-menu" href="#ranking"><span aria-hidden="true">♛</span>Ranking do quiz</a>
+                <a class="item-menu" href="../cadastroNinja.html"><span class="icone-perfil-menu" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"></circle><path d="M4.5 20c.5-4 3.2-6 7.5-6s7 2 7.5 6"></path></svg></span>Perfil Ninja</a>
             </nav>
 
             <div class="aldeia-ativa">
@@ -43,6 +44,12 @@
                     <span>Konohagakure</span>
                 </div>
             </header>
+
+            <aside class="aviso-perfil-ninja" id="aviso-perfil-ninja" hidden>
+                <span class="icone-aviso-perfil" aria-hidden="true">忍</span>
+                <span><strong>Complete seu Perfil Ninja</strong><small>Defina sua aldeia, seu clã e suas habilidades.</small></span>
+                <a href="../cadastroNinja.html">Criar perfil</a>
+            </aside>
 
             <section class="resumo-indicadores" aria-label="Resumo da aldeia">
                 <article class="cartao-resumo">
@@ -126,10 +133,13 @@
         </main>
     </div>
 
+    <script src="../js/perfilNinja.js"></script>
     <script>
         if (sessionStorage.NOME_USUARIO != undefined) {
-            b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+            b_usuario.textContent = sessionStorage.NOME_USUARIO;
         }
+
+        SysKagePerfilNinja.inicializarDashboard();
 
         var corAzul = "#192856";
         var corLaranja = "#ff7014";

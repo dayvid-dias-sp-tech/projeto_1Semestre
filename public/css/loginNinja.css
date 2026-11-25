@@ -2,8 +2,18 @@
 
 :root {
     font-family: 'Barlow', Arial, sans-serif;
-    color: #172554;
-    background: #fff;
+    color: #E8EAF0;
+    background: #0B0E13;
+    color-scheme: dark;
+    --cor-fundo: #0B0E13;
+    --cor-sidebar: #10151D;
+    --cor-card: #151B25;
+    --cor-borda: #252E3B;
+    --cor-titulo: #E8EAF0;
+    --cor-secundaria: #A0A8B5;
+    --cor-primaria: #E87532;
+    --cor-hover: #F28B45;
+    --cor-destaque: #A83232;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
 }
@@ -16,6 +26,7 @@ body {
     min-width: 320px;
     min-height: 100vh;
     margin: 0;
+    background: var(--cor-fundo);
 }
 
 a {
@@ -33,8 +44,8 @@ a {
     flex: 0 0 48%;
     flex-direction: column;
     padding: 28px 7% 36px;
-    color: #fff;
-    background: #192856;
+    color: var(--cor-titulo);
+    background: var(--cor-sidebar);
 }
 
 .marca {
@@ -64,7 +75,7 @@ a {
 
 .chamada {
     margin: 0 0 12px;
-    color: #ffc400;
+    color: var(--cor-primaria);
     font-size: 10px;
     font-weight: 700;
     letter-spacing: .35px;
@@ -93,14 +104,14 @@ a {
     align-items: center;
     gap: 12px;
     margin: 18px 0 0;
-    color: #c3cbe0;
+    color: var(--cor-secundaria);
     font-size: 12px;
 }
 
 .legenda span {
     width: 20px;
     height: 2px;
-    background: #ff6b13;
+    background: var(--cor-primaria);
 }
 
 .painel-formulario {
@@ -109,7 +120,7 @@ a {
     align-items: center;
     justify-content: center;
     padding: 40px 7%;
-    background: #fff;
+    background: var(--cor-fundo);
 }
 
 .formulario-conteudo {
@@ -119,14 +130,14 @@ a {
 
 .formulario-conteudo h2 {
     margin: 0 0 6px;
-    color: #192856;
+    color: var(--cor-titulo);
     font-size: 28px;
     line-height: 1.2;
 }
 
 .subtitulo {
     margin: 0 0 28px;
-    color: #737d91;
+    color: var(--cor-secundaria);
     font-size: 14px;
 }
 
@@ -137,7 +148,7 @@ a {
 
 .formulario label {
     margin: 0 0 7px;
-    color: #222;
+    color: var(--cor-titulo);
     font-size: 12px;
     font-weight: 600;
 }
@@ -146,22 +157,22 @@ a {
     width: 100%;
     height: 42px;
     padding: 0 12px;
-    border: 1px solid #e4e7ed;
+    border: 1px solid var(--cor-borda);
     border-radius: 6px;
     outline: none;
-    background: #fff;
-    color: #252a35;
+    background: var(--cor-card);
+    color: var(--cor-titulo);
     font: inherit;
     font-size: 13px;
 }
 
 .formulario input:focus {
-    border-color: #192856;
-    box-shadow: 0 0 0 3px rgb(25 40 86 / 9%);
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 3px rgb(232 117 50 / 15%);
 }
 
 .formulario input::placeholder {
-    color: #8991a0;
+    color: var(--cor-secundaria);
 }
 
 .formulario > input {
@@ -188,7 +199,7 @@ a {
     padding: 0;
     border: 0;
     background: transparent;
-    color: #657087;
+    color: var(--cor-secundaria);
     cursor: pointer;
     margin-left: -42px;
 }
@@ -209,8 +220,8 @@ a {
     justify-content: center;
     border: 0;
     border-radius: 6px;
-    background: #ff6b13;
-    color: #171717;
+    background: var(--cor-primaria);
+    color: var(--cor-fundo);
     font: inherit;
     font-size: 13px;
     font-weight: 700;
@@ -219,12 +230,12 @@ a {
 }
 
 .botao-entrar:hover {
-    background: #f45d07;
+    background: var(--cor-hover);
 }
 
 .mensagem-erro {
     margin: 0;
-    color: #b42318;
+    color: var(--cor-hover);
     font-size: 12px;
 }
 
@@ -232,15 +243,19 @@ a {
     margin-top: 12px;
 }
 
+.mensagem-erro.sucesso {
+    color: var(--cor-hover);
+}
+
 .link-cadastro {
     margin: 22px 0 0;
-    color: #737d91;
+    color: var(--cor-secundaria);
     font-size: 12px;
     text-align: center;
 }
 
 .link-cadastro a {
-    color: #192856;
+    color: var(--cor-hover);
     font-weight: 700;
 }
 
