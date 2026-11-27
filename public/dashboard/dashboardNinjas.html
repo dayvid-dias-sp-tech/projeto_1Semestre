@@ -18,11 +18,11 @@
 
             <nav class="menu-sidebar" aria-label="Navegação do dashboard">
                 <a class="item-menu ativo" href="#visao-geral"><span aria-hidden="true">▦</span>Dashboard</a>
-                <a class="item-menu" href="#indicadores"><span aria-hidden="true">◷</span>Indicadores</a>
-                <a class="item-menu" href="#desempenho"><span aria-hidden="true">▤</span>Desempenho</a>
-                <a class="item-menu" href="#ranking"><span aria-hidden="true">♛</span>Ranking do quiz</a>
+                <a class="item-menu" href="./quizNinja.html"><span aria-hidden="true">✦</span>Quiz</a>
                 <a class="item-menu" href="../cadastroNinja.html"><span class="icone-perfil-menu" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"></circle><path d="M4.5 20c.5-4 3.2-6 7.5-6s7 2 7.5 6"></path></svg></span>Perfil Ninja</a>
             </nav>
+
+            <a class="botao-desconectar" href="../loginNinja.html"><span aria-hidden="true">↪</span>Desconectar</a>
 
             <div class="aldeia-ativa">
                 <p class="rotulo-sidebar">Aldeia ativa</p>
@@ -106,7 +106,23 @@
                 </article>
             </section>
 
-            <p class="aviso-mock">Dados demonstrativos para visualização do dashboard.</p>
+            <section class="preferencias-dashboard" aria-labelledby="titulo-preferencias">
+                <header class="titulo-preferencias">
+                    <div><p class="rotulo-painel">PERFIS NINJA</p><h2 id="titulo-preferencias">Personagens e Kekkei Genkai favoritos</h2><p>Contagem das escolhas feitas nos perfis salvos neste navegador.</p></div>
+                </header>
+                <div class="graficos-preferencias">
+                    <article class="painel-grafico painel-preferencia">
+                        <div class="titulo-painel"><div><h2>Ninjas favoritos</h2><p>Quantidade de participantes por personagem escolhido</p></div></div>
+                        <div class="area-grafico"><canvas id="graficoFavoritos" role="img" aria-label="Gráfico de personagens favoritos e quantidade de perfis que os escolheram"></canvas><p class="estado-sem-dados" id="sem-dados-favoritos" hidden>Salve perfis ninja neste navegador para ver as escolhas de personagens.</p></div>
+                    </article>
+                    <article class="painel-grafico painel-preferencia">
+                        <div class="titulo-painel"><div><h2>Kekkei Genkai mais escolhidas</h2><p>Quantidade de participantes por linhagem selecionada</p></div></div>
+                        <div class="area-grafico"><canvas id="graficoKekkei" role="img" aria-label="Gráfico das Kekkei Genkai escolhidas e quantidade de perfis por opção"></canvas><p class="estado-sem-dados" id="sem-dados-kekkei" hidden>Salve perfis ninja com uma Kekkei Genkai para ver a distribuição.</p></div>
+                    </article>
+                </div>
+            </section>
+
+            <p class="aviso-mock">Os indicadores gerais são demonstrativos. As preferências contam apenas os perfis salvos neste navegador.</p>
         </main>
     </div>
 
@@ -280,6 +296,93 @@
                 }
             }
         });
+
+        const perfisLocais = SysKagePerfilNinja.listarPerfisLocais();
+
+        function contarEscolhas(campo) {
+            const contagem = Object.create(null);
+
+            perfisLocais.forEach(function (perfil) {
+                const escolha = perfil[campo];
+                if (typeof escolha !== "string" || escolha.trim() === "") return;
+                contagem[escolha] = (contagem[escolha] || 0) + 1;
+            });
+
+            return Object.entries(contagem).sort(function (a, b) {
+                return b[1] - a[1] || a[0].localeCompare(b[0], "pt-BR");
+            });
+        }
+
+        function mostrarGraficoEscolhas(campo, canvasId, avisoId, corDestaque) {
+            const escolhas = contarEscolhas(campo);
+            const canvas = document.getElementById(canvasId);
+
+            if (escolhas.length === 0) {
+                canvas.hidden = true;
+                document.getElementById(avisoId).hidden = false;
+                return;
+            }
+
+            new Chart(canvas, {
+                type: "bar",
+                data: {
+                    labels: escolhas.map(function (item) { return item[0]; }),
+                    datasets: [{
+                        label: "Perfis",
+                        data: escolhas.map(function (item) { return item[1]; }),
+                        backgroundColor: escolhas.map(function (_, indice) { return indice === 0 ? corDestaque : paletaDashboard.laranja; }),
+                        borderRadius: 4,
+                        maxBarThickness: 22
+                    }]
+                },
+                options: {
+                    ...opcoesComuns,
+                    indexAxis: "y",
+                    scales: {
+                        x: {
+                            ...opcoesEixos.x,
+                            min: 0,
+                            max: Math.max(2, ...escolhas.map(function (item) { return item[1] + 1; })),
+                            ticks: { ...opcoesEixos.x.ticks, stepSize: 1, precision: 0 },
+                            grid: { color: paletaDashboard.borda, drawBorder: false },
+                            border: { display: false }
+                        },
+                        y: { ...opcoesEixos.y, reverse: true, grid: { display: false }, border: { display: false } }
+                    },
+                    plugins: {
+                        ...opcoesComuns.plugins,
+                        tooltip: {
+                            ...opcoesComuns.plugins.tooltip,
+                            callbacks: {
+                                label: function (contexto) {
+                                    const quantidade = contexto.parsed.x;
+                                    return " " + quantidade + (quantidade === 1 ? " participante" : " participantes");
+                                }
+                            }
+                        }
+                    }
+                },
+                plugins: [{
+                    id: "rotulos-" + canvasId,
+                    afterDatasetsDraw: function (grafico) {
+                        const contexto = grafico.ctx;
+                        const barras = grafico.getDatasetMeta(0).data;
+                        contexto.save();
+                        contexto.fillStyle = paletaDashboard.texto;
+                        contexto.font = "600 11px Barlow, Arial, sans-serif";
+                        contexto.textAlign = "left";
+                        contexto.textBaseline = "middle";
+                        barras.forEach(function (barra, indice) {
+                            contexto.fillText(String(grafico.data.datasets[0].data[indice]), barra.x + 8, barra.y);
+                        });
+                        contexto.restore();
+                    }
+                }]
+            });
+        }
+
+        mostrarGraficoEscolhas("personagemFavorito", "graficoFavoritos", "sem-dados-favoritos", paletaDashboard.laranja);
+        mostrarGraficoEscolhas("kekkeiGenkai", "graficoKekkei", "sem-dados-kekkei", paletaDashboard.vermelho);
     </script>
 </body>
 </html>

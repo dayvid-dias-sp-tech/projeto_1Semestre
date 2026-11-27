@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0B0E13">
+    <title>SysKage | Quiz Naruto</title>
+    <link rel="stylesheet" href="../css/dashboardNinja.css">
+</head>
+<body>
+    <div class="dashboard-shell">
+        <aside class="sidebar">
+            <a class="marca" href="../home.html" aria-label="SysKage, página inicial">
+                <img class="logo-syskage" src="../assets/imgs/logo-syskage-header.png" alt="SysKage">
+            </a>
+            <p class="legenda-sidebar">Sua jornada ninja</p>
+
+            <nav class="menu-sidebar" aria-label="Navegação do dashboard">
+                <a class="item-menu" href="./dashboardNinjas.html"><span aria-hidden="true">▦</span>Dashboard</a>
+                <a class="item-menu ativo" href="./quizNinja.html"><span aria-hidden="true">✦</span>Quiz</a>
+                <a class="item-menu" href="../cadastroNinja.html"><span class="icone-perfil-menu" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"></circle><path d="M4.5 20c.5-4 3.2-6 7.5-6s7 2 7.5 6"></path></svg></span>Perfil Ninja</a>
+            </nav>
+
+            <a class="botao-desconectar" href="../loginNinja.html"><span aria-hidden="true">↪</span>Desconectar</a>
+
+            <div class="aldeia-ativa">
+                <p class="rotulo-sidebar">SysKage</p>
+                <p class="nome-aldeia"><span aria-hidden="true">✦</span> Quiz ninja</p>
+                <p class="descricao-aldeia">Teste seus conhecimentos</p>
+            </div>
+        </aside>
+
+        <main class="conteudo-dashboard">
+            <header class="cabecalho-dashboard">
+                <div>
+                    <p class="caminho-dashboard">SysKage <span>/</span> <strong>Quiz</strong></p>
+                    <h1>Quiz do universo ninja</h1>
+                    <p class="subtitulo-dashboard">Responda às perguntas e veja quantos acertos consegue conquistar.</p>
+                </div>
+            </header>
+
+            <section class="quiz-conteudo" aria-labelledby="titulo-pergunta">
+                <div class="quiz-resumo">
+                    <span class="rotulo-painel">DESAFIO SHINOBI</span>
+                    <span id="progresso-texto">Pergunta 1 de 5</span>
+                </div>
+                <div class="barra-progresso" role="progressbar" aria-label="Progresso do quiz" aria-valuemin="0" aria-valuemax="5" aria-valuenow="1">
+                    <span id="barra-progresso-interna"></span>
+                </div>
+                <article class="cartao-quiz">
+                    <p class="numero-pergunta" id="numero-pergunta">PERGUNTA 01</p>
+                    <h2 id="titulo-pergunta">Carregando pergunta...</h2>
+                    <div class="alternativas-quiz" id="alternativas-quiz"></div>
+                    <p class="feedback-quiz" id="feedback-quiz" role="status" aria-live="polite"></p>
+                    <button class="botao-acao-quiz" id="botao-quiz" type="button">Responder</button>
+                </article>
+                <p class="nota-quiz">Quiz demonstrativo. Sua pontuação não é enviada nem salva.</p>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const perguntas = [
+            { pergunta: "Qual é a aldeia de origem de Naruto?", opcoes: ["Sunagakure", "Konohagakure", "Kirigakure", "Iwagakure"], resposta: 1 },
+            { pergunta: "Qual é o nome do clã de Sasuke?", opcoes: ["Nara", "Hyūga", "Uchiha", "Akimichi"], resposta: 2 },
+            { pergunta: "Quem foi o mestre de Naruto durante parte de seu treinamento?", opcoes: ["Jiraiya", "Might Guy", "Asuma Sarutobi", "Kurenai Yūhi"], resposta: 0 },
+            { pergunta: "Qual habilidade ocular é associada ao clã Hyūga?", opcoes: ["Sharingan", "Byakugan", "Rinnegan", "Ketsuryūgan"], resposta: 1 },
+            { pergunta: "Quem é conhecido como o Quarto Hokage?", opcoes: ["Hashirama Senju", "Tobirama Senju", "Hiruzen Sarutobi", "Minato Namikaze"], resposta: 3 }
+        ];
+
+        let perguntaAtual = 0;
+        let pontuacao = 0;
+        let respondida = false;
+
+        const tituloPergunta = document.getElementById("titulo-pergunta");
+        const alternativas = document.getElementById("alternativas-quiz");
+        const feedback = document.getElementById("feedback-quiz");
+        const botaoQuiz = document.getElementById("botao-quiz");
+        const progressoTexto = document.getElementById("progresso-texto");
+        const barra = document.getElementById("barra-progresso-interna");
+        const barraContainer = document.querySelector(".barra-progresso");
+
+        function mostrarPergunta() {
+            const item = perguntas[perguntaAtual];
+            respondida = false;
+            feedback.textContent = "";
+            feedback.className = "feedback-quiz";
+            tituloPergunta.textContent = item.pergunta;
+            document.getElementById("numero-pergunta").textContent = "PERGUNTA " + String(perguntaAtual + 1).padStart(2, "0");
+            progressoTexto.textContent = "Pergunta " + (perguntaAtual + 1) + " de " + perguntas.length;
+            barra.style.width = ((perguntaAtual + 1) / perguntas.length * 100) + "%";
+            barraContainer.setAttribute("aria-valuenow", perguntaAtual + 1);
+            botaoQuiz.textContent = "Responder";
+            alternativas.replaceChildren();
+
+            item.opcoes.forEach(function (opcao, indice) {
+                const label = document.createElement("label");
+                label.className = "opcao-quiz";
+
+                const radio = document.createElement("input");
+                radio.type = "radio";
+                radio.name = "resposta";
+                radio.value = indice;
+
+                const texto = document.createElement("span");
+                texto.textContent = opcao;
+
+                label.append(radio, texto);
+                alternativas.appendChild(label);
+            });
+        }
+
+        function mostrarResultado() {
+            progressoTexto.textContent = "Quiz concluído";
+            barra.style.width = "100%";
+            barraContainer.setAttribute("aria-valuenow", perguntas.length);
+            document.getElementById("numero-pergunta").textContent = "RESULTADO";
+            tituloPergunta.textContent = "Você acertou " + pontuacao + " de " + perguntas.length + " perguntas.";
+            alternativas.replaceChildren();
+            feedback.className = "feedback-quiz resultado-quiz";
+            feedback.textContent = pontuacao === perguntas.length ? "Impressionante! Você domina o universo ninja." : "Continue treinando para aprimorar seus conhecimentos.";
+            botaoQuiz.textContent = "Tentar novamente";
+            botaoQuiz.dataset.acao = "reiniciar";
+        }
+
+        botaoQuiz.addEventListener("click", function () {
+            if (botaoQuiz.dataset.acao === "reiniciar") {
+                perguntaAtual = 0;
+                pontuacao = 0;
+                delete botaoQuiz.dataset.acao;
+                mostrarPergunta();
+                return;
+            }
+
+            if (respondida) {
+                perguntaAtual += 1;
+                if (perguntaAtual >= perguntas.length) {
+                    mostrarResultado();
+                } else {
+                    mostrarPergunta();
+                }
+                return;
+            }
+
+            const selecionada = document.querySelector('input[name="resposta"]:checked');
+            if (!selecionada) {
+                feedback.className = "feedback-quiz feedback-erro";
+                feedback.textContent = "Escolha uma alternativa para continuar.";
+                return;
+            }
+
+            const acertou = Number(selecionada.value) === perguntas[perguntaAtual].resposta;
+            if (acertou) pontuacao += 1;
+            respondida = true;
+
+            document.querySelectorAll('input[name="resposta"]').forEach(function (opcao) { opcao.disabled = true; });
+            feedback.className = acertou ? "feedback-quiz feedback-correto" : "feedback-quiz feedback-incorreto";
+            feedback.textContent = acertou ? "Resposta correta!" : "Resposta incorreta. A alternativa correta está destacada.";
+            const indiceCorreto = perguntas[perguntaAtual].resposta;
+            alternativas.children[indiceCorreto].classList.add("opcao-correta");
+            if (!acertou) alternativas.children[Number(selecionada.value)].classList.add("opcao-incorreta");
+            botaoQuiz.textContent = perguntaAtual === perguntas.length - 1 ? "Ver resultado" : "Próxima pergunta";
+        });
+
+        mostrarPergunta();
+    </script>
+</body>
+</html>

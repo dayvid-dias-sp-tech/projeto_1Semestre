@@ -24,6 +24,25 @@
         }
     }
 
+    function listarPerfisLocais() {
+        var prefixo = "syskage:perfil-ninja:";
+        var perfis = [];
+
+        for (var indice = 0; indice < localStorage.length; indice += 1) {
+            var chave = localStorage.key(indice);
+            if (!chave || chave.indexOf(prefixo) !== 0) continue;
+
+            try {
+                var perfil = JSON.parse(localStorage.getItem(chave) || "null");
+                if (perfil && typeof perfil === "object") perfis.push(perfil);
+            } catch (erro) {
+                // Ignora entradas incompletas e continua lendo os demais perfis locais.
+            }
+        }
+
+        return perfis;
+    }
+
     function inicializarPaginaPerfilNinja() {
         var formulario = document.getElementById("form-perfil-ninja");
         if (!formulario) return;
@@ -100,6 +119,7 @@
 
     window.SysKagePerfilNinja = {
         inicializarPagina: inicializarPaginaPerfilNinja,
-        inicializarDashboard: inicializarDashboard
+        inicializarDashboard: inicializarDashboard,
+        listarPerfisLocais: listarPerfisLocais
     };
 })();
